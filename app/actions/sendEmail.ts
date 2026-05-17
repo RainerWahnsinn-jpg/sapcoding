@@ -44,13 +44,17 @@ export async function sendEmail(formData: FormData): Promise<SendEmailResult> {
   `;
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "Constantin.Weib@hotmail.com",
       subject,
       text: plainText,
       html,
     });
+
+    if (error) {
+      return { error: error.message || "E-Mail konnte nicht gesendet werden." };
+    }
 
     return { success: true };
   } catch (error) {
