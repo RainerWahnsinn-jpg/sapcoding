@@ -16,7 +16,7 @@ export default function ContactForm() {
     startTransition(async () => {
       const result = await sendEmail(formData);
 
-      if (result.ok) {
+      if ("success" in result) {
         toast.success("Danke! Deine Anfrage ist angekommen.");
         formRef.current?.reset();
         return;
@@ -78,7 +78,7 @@ export default function ContactForm() {
         disabled={isPending}
         className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_40px_rgba(59,130,246,0.45)] transition hover:brightness-110 hover:shadow-[0_0_60px_rgba(59,130,246,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {isPending ? "Wird gesendet..." : "Projekt anfragen"}
+        {isPending ? "Senden..." : "Nachricht senden"}
       </button>
     </form>
   );
