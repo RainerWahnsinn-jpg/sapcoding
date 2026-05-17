@@ -8,7 +8,11 @@ export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
 
-  const handleSubmit = (formData: FormData) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
     startTransition(async () => {
       const result = await sendEmail(formData);
 
@@ -25,7 +29,8 @@ export default function ContactForm() {
   return (
     <form
       ref={formRef}
-      action={handleSubmit}
+      onSubmit={handleSubmit}
+      method="post"
       className="space-y-5 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
     >
       <div className="grid gap-5 md:grid-cols-2">
