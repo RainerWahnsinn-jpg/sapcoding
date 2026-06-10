@@ -12,6 +12,7 @@ export async function sendEmail(formData: FormData): Promise<SendEmailResult> {
   const name = String(formData.get("name") || "").trim();
   const email = String(formData.get("email") || "").trim();
   const company = String(formData.get("company") || "").trim();
+  const phone = String(formData.get("phone") || "").trim();
   const message = String(formData.get("message") || "").trim();
 
   if (!name || !email || !message) {
@@ -29,6 +30,7 @@ export async function sendEmail(formData: FormData): Promise<SendEmailResult> {
     `Name: ${name}`,
     `E-Mail: ${email}`,
     `Unternehmen: ${company || "-"}`,
+    `Telefon: ${phone || "-"}`,
     "",
     "Anliegen:",
     message,
@@ -39,6 +41,7 @@ export async function sendEmail(formData: FormData): Promise<SendEmailResult> {
     <p><strong>Name:</strong> ${name}</p>
     <p><strong>E-Mail:</strong> ${email}</p>
     <p><strong>Unternehmen:</strong> ${company || "-"}</p>
+    <p><strong>Telefon:</strong> ${phone || "-"}</p>
     <p><strong>Anliegen:</strong></p>
     <p>${message.replace(/\n/g, "<br />")}</p>
   `;

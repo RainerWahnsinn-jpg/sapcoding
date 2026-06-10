@@ -16,16 +16,36 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Webentwicklung & KI Agentur in Siegen | Constantin Weib",
+  title: "Constantin-Felix Weib | Webentwicklung & KI-Automatisierung Siegen",
   description:
-    "Maßgeschneiderte Webseiten, smarte Apps und KI-Integrationen für Unternehmen im Raum Siegen und Südwestfalen. Mehr Umsatz durch performante Software.",
+    "Maßgeschneiderte Webentwicklung und KI-Automatisierung für den Mittelstand in Siegen und Siegen-Wittgenstein. Mehr Leads, weniger Aufwand – schnell umgesetzt.",
   keywords: [
-    "Webdesign Siegen",
+    "Webentwicklung Siegen",
     "Webagentur Siegen",
+    "KI-Automatisierung Siegen",
     "KI Agentur Südwestfalen",
-    "Webentwickler Siegen",
-    "Next.js",
+    "Webentwickler Siegen-Wittgenstein",
+    "Mittelstand Siegen digitalisieren",
+    "Next.js Agentur NRW",
   ],
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    url: "https://www.constantin-felix.de",
+    siteName: "Constantin-Felix Weib – Web & KI Agentur Siegen",
+    title: "Constantin-Felix Weib | Webentwicklung & KI-Automatisierung Siegen",
+    description:
+      "Maßgeschneiderte Webentwicklung und KI-Automatisierung für den Mittelstand im Raum Siegen-Wittgenstein.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Constantin-Felix Weib | Webentwicklung & KI-Automatisierung Siegen",
+    description:
+      "Maßgeschneiderte Webentwicklung und KI-Automatisierung für den Mittelstand im Raum Siegen-Wittgenstein.",
+  },
+  alternates: {
+    canonical: "https://www.constantin-felix.de",
+  },
 };
 
 export default function RootLayout({
@@ -35,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="de"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
@@ -44,16 +64,34 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              name: "Constantin Weib - Web & KI Agentur",
-              areaServed: "Siegen",
-              url: "https://example.com",
+              "@type": "LocalBusiness",
+              name: "Constantin-Felix Weib – Web & KI Agentur Siegen",
+              description:
+                "Maßgeschneiderte Webentwicklung und KI-Automatisierung für Unternehmen im Raum Siegen-Wittgenstein.",
+              url: "https://www.constantin-felix.de",
+              email: "Constantin.Weib@hotmail.com",
+              areaServed: [
+                { "@type": "City", name: "Siegen" },
+                { "@type": "AdministrativeArea", name: "Siegen-Wittgenstein" },
+                { "@type": "State", name: "Nordrhein-Westfalen" },
+              ],
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Siegen",
-                addressRegion: "NRW",
+                streetAddress: "Hagener Str. 8",
+                addressLocality: "Wilnsdorf",
+                postalCode: "57234",
+                addressRegion: "Nordrhein-Westfalen",
                 addressCountry: "DE",
               },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 50.8228,
+                longitude: 8.0762,
+              },
+              priceRange: "€€",
+              currenciesAccepted: "EUR",
+              openingHours: "Mo-Fr 09:00-18:00",
+              sameAs: [],
             }),
           }}
         />

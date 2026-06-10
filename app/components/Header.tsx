@@ -3,7 +3,7 @@ export default function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <a className="text-sm font-semibold tracking-tight text-white" href="/">
-          Constantin Weib
+          Constantin-Felix Weib
         </a>
         <nav className="hidden items-center gap-8 text-sm md:flex">
           <a className="text-gray-400 transition-colors hover:text-white" href="#services">
