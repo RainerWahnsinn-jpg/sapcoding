@@ -26,7 +26,7 @@ export default function DatenschutzPage() {
               Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
             </p>
             <p className="mt-4 font-semibold text-white/90">Verantwortlicher</p>
-            <p>Constantin Weib</p>
+            <p>Constantin-Felix Weib</p>
             <p>
               E-Mail:{" "}
               <a className="underline" href="mailto:Constantin.Weib@hotmail.com">
