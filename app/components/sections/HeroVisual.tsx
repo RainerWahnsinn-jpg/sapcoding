@@ -107,9 +107,13 @@ function HeroVisual() {
     };
 
     const buildParticles = () => {
+      // Mobile-Drossel: < 768px Viewport → feste, akkuschonende Partikelanzahl
+      const isMobile = window.innerWidth < 768;
       const target = reduceMotion
         ? 0
-        : Math.min(3200, Math.max(900, Math.round((width * height) / 520)));
+        : isMobile
+          ? 700
+          : Math.min(3200, Math.max(900, Math.round((width * height) / 520)));
       particles = Array.from({ length: target }, () => {
         const p: Particle = {
           x: 0, y: 0, vx: 0, vy: 0, life: 0, maxLife: 1, size: 1, depth: 0, hue: 0,

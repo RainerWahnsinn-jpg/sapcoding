@@ -9,15 +9,15 @@ const HeroVisual = dynamic(() => import("./HeroVisual"), { ssr: false });
 
 export default function Hero() {
   return (
-    <section id="kontakt" className="relative isolate min-h-screen overflow-hidden bg-black">
+    <section className="relative isolate min-h-screen overflow-hidden bg-black">
       {/* Ebene 0: Immersive Partikel-Simulation – rein dekorativ, fängt keine Events */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <HeroVisual />
       </div>
 
       {/* Ebene 10: UI-Content – vollständig interaktiv */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 py-28 sm:px-10">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-5 py-28 sm:px-10">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Linke Spalte: Majestätische Headline */}
           <div className="flex flex-col">
             <p className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-white/60 backdrop-blur-md">
@@ -25,7 +25,7 @@ export default function Hero() {
               Web + KI Agentur — Siegen
             </p>
 
-            <h1 className="text-5xl font-semibold leading-[1.04] tracking-tighter text-white sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
+            <h1 className="text-4xl font-semibold leading-[1.08] tracking-tighter text-white md:text-6xl lg:text-7xl">
               Lassen Sie uns Ihre{" "}
               <span className="bg-linear-to-r from-violet-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
                 digitale Infrastruktur
@@ -52,7 +52,10 @@ export default function Hero() {
           {/* Rechte Spalte: Schwebende Glassmorphism-Karte mit Kontaktformular.
               State-Isolation: ContactForm verwaltet seinen Zustand intern,
               HeroVisual ist memoisiert – Tippen re-rendert die Szene nicht. */}
-          <div className="bg-white/5 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] p-8 lg:p-12 relative z-10">
+          <div
+            id="kontakt"
+            className="scroll-mt-24 bg-white/5 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] p-5 sm:p-8 lg:p-12 relative z-10"
+          >
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/50">
               Projektanfrage
             </p>

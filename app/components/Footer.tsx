@@ -2,12 +2,14 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black py-12">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 text-sm text-white/60 sm:flex-row">
-        <div className="text-center sm:text-left">
-          <p className="text-white/80">Maßgeschneiderte Webentwicklung & KI-Automatisierung.</p>
-          <p className="mt-2 text-white/50">
-            © 2026 Constantin-Felix Weib. Alle Rechte vorbehalten
+    <footer className="border-t border-white/5 bg-black py-20">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 text-sm sm:px-6 md:grid-cols-[2fr_1fr] md:items-end">
+        <div>
+          <p className="text-xs uppercase tracking-[0.25em] text-white/30">
+            Entwickelt in Siegen, Südwestfalen
+          </p>
+          <p className="mt-4 text-white/50">
+            © 2026 Constantin-Felix Weib
             <Link
               href="/admin/login"
               aria-hidden="true"
@@ -17,13 +19,12 @@ export default function Footer() {
               .
             </Link>
           </p>
-          <p className="mt-2 text-white/50">Entwickelt in Siegen, Südwestfalen.</p>
         </div>
-        <div className="flex items-center gap-6">
-          <Link className="text-white/50 transition hover:text-white" href="/impressum">
+        <div className="flex items-center gap-8 text-xs tracking-wider md:justify-end">
+          <Link className="text-white/40 transition hover:text-white" href="/impressum">
             Impressum
           </Link>
-          <Link className="text-white/50 transition hover:text-white" href="/datenschutz">
+          <Link className="text-white/40 transition hover:text-white" href="/datenschutz">
             Datenschutz
           </Link>
         </div>

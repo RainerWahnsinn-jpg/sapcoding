@@ -16,7 +16,7 @@ export default function ImpressumPage() {
 
         <div className="mt-10 space-y-10 text-sm leading-7 text-white/70">
           <div>
-            <p className="text-base font-semibold text-white">Constantin Weib</p>
+            <p className="text-base font-semibold text-white">Constantin-Felix Weib</p>
             <p>Hagener Str. 8</p>
             <p>57234 Wilnsdorf</p>
             <p>Deutschland</p>
