@@ -12,9 +12,6 @@ export default function Header() {
           <a className="text-gray-400 transition-colors hover:text-white" href="#cases">
             Referenzen
           </a>
-          <a className="text-gray-400 transition-colors hover:text-white" href="#kontakt">
-            Kontakt
-          </a>
         </nav>
         <a
           className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-semibold text-white transition hover:border-white/50 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"

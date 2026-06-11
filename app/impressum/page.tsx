@@ -33,7 +33,7 @@ export default function ImpressumPage() {
             <p className="text-base font-semibold text-white">
               Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
             </p>
-            <p>Constantin Weib</p>
+            <p>Constantin-Felix Weib</p>
             <p>Hagener Str. 8</p>
             <p>57234 Wilnsdorf</p>
           </div>

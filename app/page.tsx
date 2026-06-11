@@ -1,50 +1,11 @@
 import Image from "next/image";
 import { ArrowUpRight, LayoutDashboard, Sparkles, Zap } from "lucide-react";
-import Contact from "./components/sections/Contact";
+import Hero from "./components/sections/Hero";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-zinc-950 text-zinc-50">
-      <section className="relative">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-48 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.35),rgba(0,0,0,0))] blur-2xl" />
-          <div className="absolute top-24 right-[-120px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.28),rgba(0,0,0,0))] blur-3xl" />
-          <div className="absolute bottom-[-160px] left-[-120px] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.18),rgba(0,0,0,0))] blur-3xl" />
-        </div>
-
-        <div className="mx-auto flex min-h-screen max-w-6xl flex-col items-start justify-center px-6 py-24 sm:px-10">
-          <p className="mb-6 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-medium uppercase tracking-[0.2em] text-white/70">
-            Web + KI Agentur
-          </p>
-          <h1 className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">
-            Maßgeschneiderte Webentwicklung & KI-Tools für Unternehmen in Siegen – schnell, klar,
-            messbar.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-            Wir bauen performante, conversion-starke Websites und Automationen, die Prozesse
-            vereinfachen, Leads steigern und Teams entlasten.
-          </p>
-
-          <div className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
-            <a
-              className="group inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_48px_rgba(59,130,246,0.5)] transition hover:brightness-110 hover:shadow-[0_0_64px_rgba(59,130,246,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
-              href="#kontakt"
-            >
-              Projekt besprechen
-            </a>
-            <a
-              className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 px-7 py-3 text-sm font-semibold text-white transition hover:border-white/70 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-              href="#cases"
-            >
-              Referenzen ansehen
-            </a>
-          </div>
-
-          <p className="mt-8 text-sm text-white/50">
-            Next.js, Tailwind v4, Supabase, AI Integrationen - sauber umgesetzt für Wachstum.
-          </p>
-        </div>
-      </section>
+      <Hero />
       <section id="services" className="relative border-t border-white/10 bg-black/20">
         <div className="mx-auto max-w-6xl px-6 py-24 sm:px-10">
           <div className="max-w-2xl">
@@ -208,7 +169,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Contact />
       <section className="relative border-t border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-24 text-center sm:px-10">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -219,7 +179,7 @@ export default function Home() {
           </p>
           <div className="mt-8">
             <a
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_48px_rgba(59,130,246,0.45)] transition hover:brightness-110 hover:shadow-[0_0_64px_rgba(59,130,246,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
+              className="inline-flex items-center justify-center rounded-full bg-linear-to-r from-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_48px_rgba(59,130,246,0.45)] transition hover:brightness-110 hover:shadow-[0_0_64px_rgba(59,130,246,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
               href="#kontakt"
             >
               Projekt anfragen

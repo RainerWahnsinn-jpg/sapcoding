@@ -6,9 +6,9 @@ import { toast } from "sonner";
 import { submitPortfolioLead } from "../actions/leads";
 
 const fieldClass =
-  "min-h-12 w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition-colors duration-300 placeholder:text-white/30";
+  "min-h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white outline-none transition-all duration-300 placeholder:text-white/25 focus:border-cyan-300/50 focus:bg-white/[0.06] focus:shadow-[0_0_24px_rgba(34,211,238,0.12)]";
 const wrapperClass =
-  "block space-y-2 rounded-xl text-sm text-white/70 transition-shadow duration-300 focus-within:border-white/30 focus-within:shadow-[0_0_15px_rgba(255,255,255,0.02)] [&:focus-within_input]:border-white/40 [&:focus-within_textarea]:border-white/40";
+  "block space-y-2 text-sm text-white/60 transition-colors duration-300 focus-within:text-white/90 [&:focus-within_input]:border-violet-400/60 [&:focus-within_input]:shadow-[0_0_28px_rgba(124,58,237,0.18)] [&:focus-within_textarea]:border-violet-400/60 [&:focus-within_textarea]:shadow-[0_0_28px_rgba(124,58,237,0.18)]";
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -39,7 +39,7 @@ export default function ContactForm() {
       ref={formRef}
       onSubmit={handleSubmit}
       method="post"
-      className="space-y-5 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
+      className="space-y-5"
     >
       <div className="grid gap-5 md:grid-cols-2">
         <label className={wrapperClass}>
@@ -77,7 +77,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-linear-to-r from-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_40px_rgba(59,130,246,0.45)] transition hover:brightness-110 hover:shadow-[0_0_60px_rgba(59,130,246,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 disabled:cursor-not-allowed disabled:opacity-70"
+        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-violet-500 via-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_40px_rgba(124,58,237,0.4)] transition hover:brightness-110 hover:shadow-[0_0_60px_rgba(34,211,238,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
       >
         {isSubmitting ? (
           <>
