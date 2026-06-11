@@ -16,32 +16,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Constantin-Felix Weib | Webentwicklung & KI-Automatisierung Siegen",
+  title: "Constantin-Felix Weib | Web & KI Agentur Siegen",
   description:
-    "Maßgeschneiderte Webentwicklung und KI-Automatisierung für den Mittelstand in Siegen und Siegen-Wittgenstein. Mehr Leads, weniger Aufwand – schnell umgesetzt.",
+    "High-End Webentwicklung mit Next.js, Supabase & maßgeschneiderten KI-Integrationen für den Mittelstand in Siegen und Südwestfalen. Jetzt digitale Infrastruktur aufbauen.",
   keywords: [
-    "Webentwicklung Siegen",
-    "Webagentur Siegen",
-    "KI-Automatisierung Siegen",
+    "Webdesign Siegen",
     "KI Agentur Südwestfalen",
-    "Webentwickler Siegen-Wittgenstein",
-    "Mittelstand Siegen digitalisieren",
-    "Next.js Agentur NRW",
+    "Next.js Entwickler",
+    "Webseiten bauen Nebengewerbe",
+    "Softwareentwickler Siegen",
+    "KI Builder",
+    "Automatisierung Mittelstand",
   ],
+  robots: "index, follow",
   openGraph: {
     type: "website",
     locale: "de_DE",
     url: "https://www.constantin-felix.de",
-    siteName: "Constantin-Felix Weib – Web & KI Agentur Siegen",
-    title: "Constantin-Felix Weib | Webentwicklung & KI-Automatisierung Siegen",
+    siteName: "Constantin-Felix Weib | Web & KI Agentur",
+    title: "Constantin-Felix Weib | Web & KI Agentur Siegen",
     description:
-      "Maßgeschneiderte Webentwicklung und KI-Automatisierung für den Mittelstand im Raum Siegen-Wittgenstein.",
+      "High-End Webentwicklung mit Next.js, Supabase & maßgeschneiderten KI-Integrationen für den Mittelstand in Siegen und Südwestfalen.",
+    images: [
+      {
+        url: "https://constantin-felix.de/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Constantin-Felix Weib – Web & KI Agentur Siegen",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Constantin-Felix Weib | Webentwicklung & KI-Automatisierung Siegen",
+    title: "Constantin-Felix Weib | Web & KI Agentur Siegen",
     description:
-      "Maßgeschneiderte Webentwicklung und KI-Automatisierung für den Mittelstand im Raum Siegen-Wittgenstein.",
+      "High-End Webentwicklung mit Next.js, Supabase & maßgeschneiderten KI-Integrationen für den Mittelstand in Siegen und Südwestfalen.",
+    images: ["https://constantin-felix.de/og-image.jpg"],
   },
   alternates: {
     canonical: "https://www.constantin-felix.de",
@@ -64,31 +74,27 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "Constantin-Felix Weib – Web & KI Agentur Siegen",
+              "@type": "ProfessionalService",
+              name: "Constantin-Felix Weib | Web & KI Agentur",
+              image: "https://constantin-felix.de/og-image.jpg",
               description:
-                "Maßgeschneiderte Webentwicklung und KI-Automatisierung für Unternehmen im Raum Siegen-Wittgenstein.",
-              url: "https://www.constantin-felix.de",
+                "Professionelle Full-Stack Webentwicklung und KI-Integrationen für Unternehmen in Siegen und Umgebung.",
+              url: "https://constantin-felix.de",
               email: "Constantin.Weib@hotmail.com",
+              telephone: "",
               areaServed: [
                 { "@type": "City", name: "Siegen" },
                 { "@type": "AdministrativeArea", name: "Siegen-Wittgenstein" },
+                { "@type": "AdministrativeArea", name: "Südwestfalen" },
                 { "@type": "State", name: "Nordrhein-Westfalen" },
               ],
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Hagener Str. 8",
-                addressLocality: "Wilnsdorf",
-                postalCode: "57234",
-                addressRegion: "Nordrhein-Westfalen",
+                addressLocality: "Siegen",
+                addressRegion: "Südwestfalen",
                 addressCountry: "DE",
               },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: 50.8228,
-                longitude: 8.0762,
-              },
-              priceRange: "€€",
+              priceRange: "$$",
               currenciesAccepted: "EUR",
               openingHours: "Mo-Fr 09:00-18:00",
               sameAs: [],
