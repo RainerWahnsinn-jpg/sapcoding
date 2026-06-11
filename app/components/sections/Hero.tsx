@@ -38,14 +38,26 @@ export default function Hero() {
               Vorhaben unverbindlich und liefern messbare Ergebnisse.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/40">
-              <span>Next.js</span>
-              <span className="h-1 w-1 rounded-full bg-white/20" />
-              <span>Supabase</span>
-              <span className="h-1 w-1 rounded-full bg-white/20" />
-              <span>KI-Integrationen</span>
-              <span className="h-1 w-1 rounded-full bg-white/20" />
-              <span>Tailwind v4</span>
+            <div className="mt-10 flex flex-col gap-3 text-sm text-white/40 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-8 lg:gap-y-3">
+              <span className="inline-flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
+                Next.js
+              </span>
+              <span className="hidden h-1 w-1 rounded-full bg-white/20 lg:block" />
+              <span className="inline-flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                Supabase
+              </span>
+              <span className="hidden h-1 w-1 rounded-full bg-white/20 lg:block" />
+              <span className="inline-flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
+                KI-Integrationen
+              </span>
+              <span className="hidden h-1 w-1 rounded-full bg-white/20 lg:block" />
+              <span className="inline-flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                Tailwind v4
+              </span>
             </div>
           </div>
 
