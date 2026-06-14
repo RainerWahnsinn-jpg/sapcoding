@@ -1,25 +1,107 @@
 "use server";
 
+import { headers } from "next/headers";
 import { Resend } from "resend";
 
 type LeadResult = { success: true } | { success: false; error: string };
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+/* ── Simple in-memory rate limiter (per server instance) ──────────── */
+const rateMap = new Map<string, number[]>();
+const RATE_WINDOW_MS = 60_000; // 1 minute
+const RATE_MAX = 3; // max submissions per window
+
+function isRateLimited(key: string): boolean {
+  const now = Date.now();
+  const timestamps = (rateMap.get(key) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  if (timestamps.length >= RATE_MAX) return true;
+  timestamps.push(now);
+  rateMap.set(key, timestamps);
+  return false;
+}
+
+/** Escape HTML special characters to prevent injection */
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+
+interface TurnstileVerifyResponse {
+  success: boolean;
+  "error-codes"?: string[];
+}
+
+async function verifyTurnstileToken(token: string, ip: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) {
+    console.error("❌ TURNSTILE_SECRET_KEY missing");
+    return false;
+  }
+
+  try {
+    const res = await fetch(TURNSTILE_VERIFY_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret, response: token, remoteip: ip }),
+    });
+    const data: TurnstileVerifyResponse = await res.json();
+    return data.success;
+  } catch (err) {
+    console.error("❌ Turnstile verify error", err);
+    return false;
+  }
+}
+
 export async function submitPortfolioLead(formData: FormData): Promise<LeadResult> {
+  // Honeypot – if filled, it's a bot
+  const honeypot = String(formData.get("website") || "").trim();
+  if (honeypot) {
+    // Silently accept to not reveal the trap
+    return { success: true };
+  }
+
   const name = String(formData.get("name") || "").trim();
   const email = String(formData.get("email") || "").trim();
   const company = String(formData.get("company") || "").trim();
   const phone = String(formData.get("phone") || "").trim();
   const message = String(formData.get("message") || "").trim();
+  const turnstileToken = String(formData.get("cf-turnstile-response") || "").trim();
 
-  // 🔍 Debug: action triggered
-  console.log("➡️ ACTION TRIGGERED MIT DATEN:", { name, email, company });
-  console.log("🔑 SUPABASE_SERVICE_ROLE_KEY:", process.env.SUPABASE_SERVICE_ROLE_KEY?.slice(0, 5) ?? "MISSING");
-  console.log("🔑 RESEND_API_KEY:", process.env.RESEND_API_KEY?.slice(0, 5) ?? "MISSING");
+  // Rate limit by IP
+  const h = await headers();
+  const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  if (isRateLimited(ip)) {
+    return { success: false, error: "Zu viele Anfragen. Bitte warten Sie eine Minute." };
+  }
+
+  // Verify Cloudflare Turnstile CAPTCHA
+  if (!turnstileToken) {
+    return { success: false, error: "CAPTCHA-Verifizierung fehlt. Bitte versuchen Sie es erneut." };
+  }
+  const turnstileOk = await verifyTurnstileToken(turnstileToken, ip);
+  if (!turnstileOk) {
+    return { success: false, error: "CAPTCHA-Verifizierung fehlgeschlagen. Bitte versuchen Sie es erneut." };
+  }
 
   if (!name || !email || !message) {
     return { success: false, error: "Bitte füllen Sie alle Pflichtfelder aus." };
+  }
+
+  if (!EMAIL_RE.test(email)) {
+    return { success: false, error: "Bitte geben Sie eine gültige E-Mail-Adresse ein." };
+  }
+
+  if (name.length > 200 || company.length > 200 || phone.length > 50) {
+    return { success: false, error: "Eingabe zu lang." };
   }
 
   if (message.length > 1000) {
@@ -61,7 +143,6 @@ export async function submitPortfolioLead(formData: FormData): Promise<LeadResul
       return { success: false, error: "Anfrage konnte nicht gespeichert werden." };
     }
 
-    console.log("✅ Supabase insert OK");
   } catch (err) {
     console.error("❌ Supabase fetch error", err);
     return { success: false, error: "Datenbankfehler. Bitte versuchen Sie es erneut." };
@@ -86,20 +167,18 @@ export async function submitPortfolioLead(formData: FormData): Promise<LeadResul
       ].join("\n"),
       html: `
         <h2>Neue Anfrage von der Website</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>E-Mail:</strong> ${email}</p>
-        <p><strong>Unternehmen:</strong> ${company || "-"}</p>
-        <p><strong>Telefon:</strong> ${phone || "-"}</p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Unternehmen:</strong> ${escapeHtml(company || "-")}</p>
+        <p><strong>Telefon:</strong> ${escapeHtml(phone || "-")}</p>
         <p><strong>Anliegen:</strong></p>
-        <p>${message.replace(/\n/g, "<br />")}</p>
+        <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
       `,
     });
 
     if (resendError) {
       console.error("❌ Resend error", resendError);
       // Lead is saved — don't fail the whole action over email
-    } else {
-      console.log("✅ Resend email sent");
     }
   } catch (err) {
     console.error("❌ Resend fetch error", err);

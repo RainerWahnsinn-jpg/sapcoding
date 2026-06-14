@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { submitPortfolioLead } from "../actions/leads";
@@ -13,20 +14,27 @@ const wrapperClass =
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, startTransition] = useTransition();
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!turnstileToken) {
+      toast.error("Bitte bestätigen Sie, dass Sie kein Roboter sind.");
+      return;
+    }
+
     const form = event.currentTarget;
     const formData = new FormData(form);
+    formData.set("cf-turnstile-response", turnstileToken);
 
     startTransition(async () => {
       const result = await submitPortfolioLead(formData);
 
-      console.log("🍏 SERVER ACTION ERGEBNIS IM BROWSER:", result);
-
       if (result.success) {
         toast.success("Anfrage erfolgreich gesendet!");
         formRef.current?.reset();
+        setTurnstileToken(null);
         return;
       }
 
@@ -41,6 +49,16 @@ export default function ContactForm() {
       method="post"
       className="space-y-5"
     >
+      {/* Honeypot – hidden from real users, filled by bots */}
+      <input
+        name="website"
+        type="text"
+        autoComplete="off"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="absolute -left-full h-0 w-0 overflow-hidden opacity-0"
+      />
+
       <div className="grid gap-5 md:grid-cols-2">
         <label className={wrapperClass}>
           Name *
@@ -74,9 +92,16 @@ export default function ContactForm() {
         />
       </label>
 
+      <Turnstile
+        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+        onSuccess={setTurnstileToken}
+        onExpire={() => setTurnstileToken(null)}
+        options={{ theme: "dark", size: "normal" }}
+      />
+
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !turnstileToken}
         className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-violet-500 via-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_40px_rgba(124,58,237,0.4)] transition hover:brightness-110 hover:shadow-[0_0_60px_rgba(34,211,238,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
       >
         {isSubmitting ? (
