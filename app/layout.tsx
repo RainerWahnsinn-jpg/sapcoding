@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.constantin-felix.de"),
   title: "Constantin-Felix Weib | Web & KI Agentur Siegen",
   description:
     "High-End Webentwicklung mit Next.js, Supabase & maßgeschneiderten KI-Integrationen für den Mittelstand in Siegen und Südwestfalen. Jetzt digitale Infrastruktur aufbauen.",
@@ -76,29 +77,53 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
+              "@id": "https://www.constantin-felix.de/#business",
               name: "Constantin-Felix Weib | Web & KI Agentur",
-              image: "https://constantin-felix.de/og-image.jpg",
+              image: "https://www.constantin-felix.de/og-image.jpg",
               description:
-                "Professionelle Full-Stack Webentwicklung und KI-Integrationen für Unternehmen in Siegen und Umgebung.",
-              url: "https://constantin-felix.de",
+                "Professionelle Full-Stack Webentwicklung mit Next.js, Supabase und maßgeschneiderten KI-Integrationen für den Mittelstand in Siegen, Wilnsdorf und Südwestfalen.",
+              url: "https://www.constantin-felix.de",
               email: "Constantin.Weib@hotmail.com",
-              telephone: "",
+              founder: {
+                "@type": "Person",
+                name: "Constantin-Felix Weib",
+                jobTitle: "Full-Stack Developer & Wirtschaftsinformatiker (B.Sc.)",
+              },
+              knowsAbout: [
+                "Webentwicklung",
+                "Next.js",
+                "React",
+                "Supabase",
+                "KI-Integration",
+                "Prozessautomatisierung",
+                "B2B SaaS",
+              ],
               areaServed: [
                 { "@type": "City", name: "Siegen" },
+                { "@type": "City", name: "Wilnsdorf" },
                 { "@type": "AdministrativeArea", name: "Siegen-Wittgenstein" },
                 { "@type": "AdministrativeArea", name: "Südwestfalen" },
                 { "@type": "State", name: "Nordrhein-Westfalen" },
               ],
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Siegen",
-                addressRegion: "Südwestfalen",
+                streetAddress: "Hagener Str. 8",
+                postalCode: "57234",
+                addressLocality: "Wilnsdorf",
+                addressRegion: "Nordrhein-Westfalen",
                 addressCountry: "DE",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 50.8189,
+                longitude: 8.0989,
               },
               priceRange: "$$",
               currenciesAccepted: "EUR",
               openingHours: "Mo-Fr 09:00-18:00",
-              sameAs: [],
+              sameAs: [
+                "https://www.linkedin.com/in/constantin-felix-weib-824b0116a/",
+              ],
             }),
           }}
         />

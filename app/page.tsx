@@ -1,11 +1,15 @@
 import Image from "next/image";
 import { ArrowUpRight, LayoutDashboard, Sparkles, Zap } from "lucide-react";
 import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Process from "./components/sections/Process";
+import Testimonial from "./components/sections/Testimonial";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-zinc-950 text-zinc-50">
+    <main className="relative min-h-screen overflow-x-clip bg-zinc-950 text-zinc-50">
       <Hero />
+      <About />
       <section id="services" className="relative border-t border-white/10 bg-black/20">
         <div className="mx-auto max-w-6xl px-6 py-24 sm:px-10">
           <div className="max-w-2xl">
@@ -65,6 +69,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Process />
       <section id="cases" className="relative border-t border-white/10">
         <div className="mx-auto max-w-6xl px-6 py-24 sm:px-10">
           <div className="max-w-2xl">
@@ -169,6 +174,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Testimonial />
       <section className="relative border-t border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-24 text-center sm:px-10">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
