@@ -155,11 +155,11 @@ export async function generateLead(formData: FormData): Promise<CrawlerResult> {
 
   // Schritt C: In Supabase speichern
   const { error: insertError } = await supabase.from("leads").insert({
-    company: site.company,
+    company_name: site.company,
     website: rawUrl,
     phone: site.phone,
     email: site.email,
-    weaknesses: analysis.weaknesses,
+    vulnerabilities: analysis.weaknesses,
     pitch_email: analysis.pitchEmail,
     status: "neu",
   });
