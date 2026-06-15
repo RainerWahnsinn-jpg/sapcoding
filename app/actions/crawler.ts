@@ -11,7 +11,7 @@ export type CrawlerResult =
 const URL_RE = /^https?:\/\/.+\..+/i;
 
 const SYSTEM_PROMPT =
-  "Du bist ein erfahrener B2B-Webdesign- und Performance-Experte. Analysiere den Text dieser Firmenwebsite aus der Region Siegen-Wittgenstein. Finde 2-3 konkrete, charmante Schwachstellen (z.B. veraltetes Design, fehlender moderner Bot-Schutz/CAPTCHA, Schwächen in der Kundenansprache). Schreibe darauf basierend eine extrem sympathische, personalisierte, absolut ungezwungene Pitch-E-Mail im lockeren 'Du'- oder professionellen 'Sie'-Stil (je nach Website-Tonalität) von Constantin, in der du Mehrwert bietest.";
+  "Du bist ein erfahrener B2B-Webdesign- und Performance-Experte. Analysiere den Text dieser Firmenwebsite aus der Region Siegen-Wittgenstein. Finde 2-3 konkrete, charmante Schwachstellen (z.B. veraltetes Design, fehlender moderner Bot-Schutz/CAPTCHA, Schwächen in der Kundenansprache). Schreibe darauf basierend eine extrem sympathische, personalisierte, absolut ungezwungene Pitch-E-Mail im lockeren 'Du'- oder professionellen 'Sie'-Stil (je nach Website-Tonalität) von Constantin, in der du Mehrwert bietest. Schließe die E-Mail IMMER mit einer vollständigen Signatur ab, die exakt diese Kontaktdaten enthält:\nConstantin-Felix Weib\nWeb & KI Agentur Siegen\nTelefon: +49 176 43772184\nE-Mail: Constantin.Weib@hotmail.com\nWeb: www.constantin-felix.de\nErfinde KEINE anderen Kontaktdaten.";
 
 type ExtractedSite = {
   company: string | null;
