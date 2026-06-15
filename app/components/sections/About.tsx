@@ -21,7 +21,7 @@ const highlights = [
   {
     icon: GraduationCap,
     title: "Fundiertes Studium",
-    text: "B.Sc. Wirtschaftsinformatik (THM) mit Thesis zu AI Governance & dem EU AI Act.",
+    text: "Bachelor of Arts in BWL (Fachrichtung Wirtschaftsinformatik), dual absolviert bei der Friedhelm Loh Group – mit Thesis zu AI Governance & dem EU AI Act.",
   },
 ];
 
@@ -67,7 +67,7 @@ export default function About() {
                 Constantin-Felix Weib
               </h2>
               <p className="mt-2 text-base font-medium text-cyan-300/90">
-                Wirtschaftsinformatiker (B.Sc.) · Full-Stack Developer · Solo-Founder
+                Wirtschaftsinformatiker · Full-Stack Developer · Solo-Founder
               </p>
             </Reveal>
 

@@ -87,7 +87,11 @@ export default function RootLayout({
               founder: {
                 "@type": "Person",
                 name: "Constantin-Felix Weib",
-                jobTitle: "Full-Stack Developer & Wirtschaftsinformatiker (B.Sc.)",
+                jobTitle: "Full-Stack Developer & Wirtschaftsinformatiker (B.A.)",
+                alumniOf: {
+                  "@type": "CollegeOrUniversity",
+                  name: "Technische Hochschule Mittelhessen",
+                },
               },
               knowsAbout: [
                 "Webentwicklung",

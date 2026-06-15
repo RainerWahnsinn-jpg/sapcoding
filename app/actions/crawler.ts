@@ -77,7 +77,7 @@ async function analyzeWithClaude(
   const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
   const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-5",
+    model: "claude-haiku-4-5",
     max_tokens: 1500,
     system: SYSTEM_PROMPT,
     messages: [
