@@ -4,6 +4,7 @@ import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import Process from "./components/sections/Process";
 import Testimonial from "./components/sections/Testimonial";
+import Pricing from "./components/sections/Pricing";
 import FAQ from "./components/sections/FAQ";
 
 export default function Home() {
@@ -179,6 +180,7 @@ export default function Home() {
         </div>
       </section>
       <Testimonial />
+      <Pricing />
       <FAQ />
       <section className="relative border-t border-white/10 bg-white/5">
         <div className="mx-auto max-w-6xl px-6 py-24 text-center sm:px-10">
