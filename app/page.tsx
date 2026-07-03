@@ -91,7 +91,7 @@ export default function Home() {
                   className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/5"
                 >
                   <Image
-                    src="https://image.thum.io/get/width/1200/crop/800/https://www.omnicontent.de/?v=2026070301"
+                    src="https://image.thum.io/get/width/1200/crop/800/maxAge/12/https://www.omnicontent.de/?v=2026070301"
                     alt="OmniContent – B2B KI-Lead-Maschine Plattform Screenshot"
                     width={1200}
                     height={800}
@@ -138,7 +138,7 @@ export default function Home() {
                   className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/5"
                 >
                   <Image
-                    src="https://image.thum.io/get/width/1200/crop/800/https://www.prostatalk.de/?v=2026070301"
+                    src="https://image.thum.io/get/width/1200/crop/800/maxAge/12/https://www.prostatalk.de/?v=2026070301"
                     alt="ProstaTalk – Barrierefreie Healthcare-Plattform Screenshot"
                     width={1200}
                     height={800}
