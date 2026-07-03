@@ -76,6 +76,23 @@ export async function submitPortfolioLead(formData: FormData): Promise<LeadResul
   const message = String(formData.get("message") || "").trim();
   const turnstileToken = String(formData.get("cf-turnstile-response") || "").trim();
 
+  // Optionale, dynamische Zusatzangaben aus dem Formular
+  const INTEREST_LABELS: Record<string, string> = {
+    webseite: "Neue Webseite / Relaunch",
+    plattform: "Business-Plattform / interne Tools",
+    ki: "KI-Integration / Automatisierung",
+  };
+  const interestRaw = String(formData.get("interest") || "").trim();
+  const interest = INTEREST_LABELS[interestRaw] ?? "";
+  const detail = String(
+    formData.get("detail_bewerbungen") ||
+      formData.get("detail_ki") ||
+      formData.get("detail_webseite") ||
+      "",
+  )
+    .trim()
+    .slice(0, 300);
+
   // Rate limit by IP
   const h = await headers();
   const ip = h.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
@@ -116,6 +133,16 @@ export async function submitPortfolioLead(formData: FormData): Promise<LeadResul
     return { success: false, error: "Serverkonfiguration unvollständig." };
   }
 
+  // Interesse & Detailfrage in die gespeicherte Nachricht einbetten
+  const fullMessage = [
+    interest ? `Interesse: ${interest}` : null,
+    detail ? `Detail: ${detail}` : null,
+    interest || detail ? "" : null,
+    message,
+  ]
+    .filter((line) => line !== null)
+    .join("\n");
+
   // Step 1: Insert into Supabase
   try {
     const response = await fetch(`${supabaseUrl}/rest/v1/mothership_leads`, {
@@ -131,7 +158,7 @@ export async function submitPortfolioLead(formData: FormData): Promise<LeadResul
         email,
         company: company || null,
         phone: phone || null,
-        message,
+        message: fullMessage,
         company_id: "portfolio",
         type: "customer",
       }),
@@ -161,6 +188,8 @@ export async function submitPortfolioLead(formData: FormData): Promise<LeadResul
         `E-Mail: ${email}`,
         `Unternehmen: ${company || "-"}`,
         `Telefon: ${phone || "-"}`,
+        `Interesse: ${interest || "-"}`,
+        `Detail: ${detail || "-"}`,
         "",
         "Anliegen:",
         message,
@@ -171,6 +200,8 @@ export async function submitPortfolioLead(formData: FormData): Promise<LeadResul
         <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
         <p><strong>Unternehmen:</strong> ${escapeHtml(company || "-")}</p>
         <p><strong>Telefon:</strong> ${escapeHtml(phone || "-")}</p>
+        <p><strong>Interesse:</strong> ${escapeHtml(interest || "-")}</p>
+        <p><strong>Detail:</strong> ${escapeHtml(detail || "-")}</p>
         <p><strong>Anliegen:</strong></p>
         <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
       `,
