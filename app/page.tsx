@@ -95,6 +95,7 @@ export default function Home() {
                     alt="OmniContent – B2B KI-Lead-Maschine Plattform Screenshot"
                     width={1200}
                     height={800}
+                    unoptimized
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:md:scale-105"
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />
@@ -141,6 +142,7 @@ export default function Home() {
                     alt="ProstaTalk – Barrierefreie Healthcare-Plattform Screenshot"
                     width={1200}
                     height={800}
+                    unoptimized
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:md:scale-105"
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />
