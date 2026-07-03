@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./components/Footer";
@@ -16,29 +16,65 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#09090b",
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "dark",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.constantin-felix.de"),
-  title: "Constantin-Felix Weib | Web & KI Agentur Siegen",
+  title: {
+    default: "Webdesigner Siegen | Webseite erstellen lassen & KI-Lösungen",
+    template: "%s | Constantin-Felix Weib – Web & KI Agentur Siegen",
+  },
   description:
-    "High-End Webentwicklung mit Next.js, Supabase & maßgeschneiderten KI-Integrationen für den Mittelstand in Siegen und Südwestfalen. Jetzt digitale Infrastruktur aufbauen.",
+    "Webseite erstellen lassen in Siegen: Webdesigner & Full-Stack Entwickler für moderne Websites, Web-Apps & KI-Integrationen. Faire Preise für Handwerk & Mittelstand in Siegen-Wittgenstein und Südwestfalen. Jetzt kostenlose Erstberatung sichern.",
   keywords: [
+    "Webdesigner Siegen",
+    "Webseite erstellen lassen Siegen",
+    "Homepage erstellen lassen Siegen",
+    "Webseite kaufen Siegen",
     "Webdesign Siegen",
-    "KI Agentur Südwestfalen",
-    "Next.js Entwickler",
-    "Webseiten bauen Nebengewerbe",
+    "Website erstellen lassen Südwestfalen",
+    "Webentwickler Siegen",
+    "Webdesign Agentur Siegen-Wittgenstein",
+    "Homepage Handwerker Siegen",
+    "KI Agentur Siegen",
+    "KI Integration Mittelstand",
+    "Next.js Entwickler Siegen",
     "Softwareentwickler Siegen",
-    "KI Builder",
-    "Automatisierung Mittelstand",
+    "Webseite für Handwerksbetrieb",
+    "Online-Marketing Siegen",
+    "Prozessautomatisierung Siegen",
+    "Webdesign Wilnsdorf",
+    "Webdesign Kreuztal",
+    "Webdesign Netphen",
   ],
-  robots: "index, follow",
+  authors: [{ name: "Constantin-Felix Weib" }],
+  creator: "Constantin-Felix Weib",
+  publisher: "Constantin-Felix Weib",
+  category: "Webentwicklung & KI",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "de_DE",
     url: "https://www.constantin-felix.de",
-    siteName: "Constantin-Felix Weib | Web & KI Agentur",
-    title: "Constantin-Felix Weib | Web & KI Agentur Siegen",
+    siteName: "Constantin-Felix Weib | Web & KI Agentur Siegen",
+    title: "Webdesigner Siegen | Webseite erstellen lassen & KI-Lösungen",
     description:
-      "High-End Webentwicklung mit Next.js, Supabase & maßgeschneiderten KI-Integrationen für den Mittelstand in Siegen und Südwestfalen.",
+      "Webseite erstellen lassen in Siegen: moderne Websites, Web-Apps & KI-Integrationen für Handwerk und Mittelstand in Südwestfalen. Jetzt kostenlose Erstberatung.",
     images: [
       {
         url: "https://constantin-felix.de/og-image.jpg",
@@ -50,9 +86,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Constantin-Felix Weib | Web & KI Agentur Siegen",
+    title: "Webdesigner Siegen | Webseite erstellen lassen & KI-Lösungen",
     description:
-      "High-End Webentwicklung mit Next.js, Supabase & maßgeschneiderten KI-Integrationen für den Mittelstand in Siegen und Südwestfalen.",
+      "Webseite erstellen lassen in Siegen: moderne Websites, Web-Apps & KI-Integrationen für Handwerk und Mittelstand in Südwestfalen.",
     images: ["https://constantin-felix.de/og-image.jpg"],
   },
   alternates: {
@@ -78,12 +114,15 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               "@id": "https://www.constantin-felix.de/#business",
-              name: "Constantin-Felix Weib | Web & KI Agentur",
+              name: "Constantin-Felix Weib | Web & KI Agentur Siegen",
+              alternateName: "Webdesigner Siegen – Constantin-Felix Weib",
               image: "https://www.constantin-felix.de/og-image.jpg",
+              logo: "https://www.constantin-felix.de/og-image.jpg",
               description:
-                "Professionelle Full-Stack Webentwicklung mit Next.js, Supabase und maßgeschneiderten KI-Integrationen für den Mittelstand in Siegen, Wilnsdorf und Südwestfalen.",
+                "Webdesigner und Full-Stack Entwickler in Siegen. Ich erstelle moderne Webseiten, Web-Apps und maßgeschneiderte KI-Integrationen für Handwerk und Mittelstand in Siegen, Wilnsdorf und Südwestfalen.",
               url: "https://www.constantin-felix.de",
               email: "Constantin.Weib@hotmail.com",
+              telephone: "+49-176-43772184",
               founder: {
                 "@type": "Person",
                 name: "Constantin-Felix Weib",
@@ -94,7 +133,10 @@ export default function RootLayout({
                 },
               },
               knowsAbout: [
+                "Webdesign",
                 "Webentwicklung",
+                "Webseite erstellen lassen",
+                "Homepage erstellen",
                 "Next.js",
                 "React",
                 "Supabase",
@@ -105,10 +147,47 @@ export default function RootLayout({
               areaServed: [
                 { "@type": "City", name: "Siegen" },
                 { "@type": "City", name: "Wilnsdorf" },
+                { "@type": "City", name: "Kreuztal" },
+                { "@type": "City", name: "Netphen" },
+                { "@type": "City", name: "Freudenberg" },
+                { "@type": "City", name: "Olpe" },
                 { "@type": "AdministrativeArea", name: "Siegen-Wittgenstein" },
                 { "@type": "AdministrativeArea", name: "Südwestfalen" },
                 { "@type": "State", name: "Nordrhein-Westfalen" },
               ],
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Web & KI Leistungen",
+                itemListElement: [
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Webseite erstellen lassen",
+                      description:
+                        "Moderne, schnelle und suchmaschinenoptimierte Webseiten mit Next.js für Handwerk und Mittelstand.",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "Web-App & interne Tools",
+                      description:
+                        "Individuelle Web-Apps und Workflow-Tools mit Supabase zur Digitalisierung interner Prozesse.",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "KI-Integration & Automatisierung",
+                      description:
+                        "Maßgeschneiderte KI-Features und Automatisierungen, die Routineaufgaben übernehmen und Zeit sparen.",
+                    },
+                  },
+                ],
+              },
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Hagener Str. 8",
