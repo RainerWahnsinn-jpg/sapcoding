@@ -92,7 +92,7 @@ export default function Home() {
                 >
                   <Image
                     src="https://image.thum.io/get/width/1200/crop/800/https://www.omnicontent.de"
-                    alt="OmniContent – High-Performance B2B SaaS Plattform Screenshot"
+                    alt="OmniContent – B2B KI-Lead-Maschine Plattform Screenshot"
                     width={1200}
                     height={800}
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:md:scale-105"
@@ -116,13 +116,14 @@ export default function Home() {
                   OmniContent
                 </p>
                 <h3 className="mt-4 bg-linear-to-r from-white via-indigo-200 to-cyan-300 bg-clip-text text-3xl font-semibold tracking-tight text-transparent sm:text-4xl">
-                  High-Performance B2B SaaS
+                  Die B2B KI-Lead-Maschine
                 </h3>
                 <p className="mt-4 text-base leading-7 text-white/70">
-                  Eine SaaS-Plattform für die parallele Multi-Plattform-Generierung von Content.
-                  GPT-4o Vision-Audits prüfen Assets automatisiert auf Qualität, während intelligente
-                  Verteilungs-Pipelines Inhalte zielgenau an die richtigen Kanäle ausspielen –
-                  gebaut auf Next.js und Supabase mit sicherer Auth.
+                  Eine SaaS-Plattform, die aus Firmen-Webseiten heiße B2B-Leads macht: Der
+                  Regional-Radar zieht über die Google Places API passende Unternehmen, ein
+                  Mängel-Scanner deckt Webseiten-Schwächen auf (Ladezeit, fehlendes SSL,
+                  DSGVO-Lücken) und Claude Opus schreibt daraus den psychologisch perfekten Pitch –
+                  gebaut auf Next.js und Supabase, Serverstandort Deutschland.
                 </p>
               </div>
             </article>

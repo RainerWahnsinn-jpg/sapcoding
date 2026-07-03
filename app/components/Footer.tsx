@@ -1,11 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function Footer() {
-  const router = useRouter();
-
   return (
     <footer className="border-t border-white/5 bg-black py-20">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 text-sm sm:px-6 md:grid-cols-[2fr_1fr] md:items-end">
@@ -13,10 +8,7 @@ export default function Footer() {
           <p className="text-xs uppercase tracking-[0.25em] text-white/30">
             Entwickelt in Siegen, Südwestfalen
           </p>
-          <p
-            onDoubleClick={() => router.push("/admin/login")}
-            className="mt-4 select-none text-white/50"
-          >
+          <p className="mt-4 select-none text-white/50">
             © 2026 Constantin-Felix Weib
           </p>
         </div>
