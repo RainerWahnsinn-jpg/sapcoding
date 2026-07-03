@@ -1,9 +1,31 @@
 import Link from "next/link";
+import { CITIES } from "../lib/cities";
 
 export default function Footer() {
   return (
     <footer className="border-t border-white/5 bg-black py-20">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 text-sm sm:px-6 md:grid-cols-[2fr_1fr] md:items-end">
+      {/* Regionen: interne Links für lokale SEO */}
+      <div className="mx-auto mb-14 max-w-7xl px-5 sm:px-6">
+        <p className="text-xs uppercase tracking-[0.25em] text-white/30">
+          Webdesign im Siegerland &amp; Umgebung
+        </p>
+        <nav
+          aria-label="Regionen"
+          className="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-xs tracking-wider text-white/40"
+        >
+          {CITIES.map((city) => (
+            <Link
+              key={city.slug}
+              href={`/webdesign-${city.slug}`}
+              className="transition hover:text-white"
+            >
+              Webdesign {city.name}
+            </Link>
+          ))}
+        </nav>
+      </div>
+
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 border-t border-white/5 px-5 pt-14 text-sm sm:px-6 md:grid-cols-[2fr_1fr] md:items-end">
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-white/30">
             Entwickelt in Siegen, Südwestfalen
