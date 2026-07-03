@@ -6,6 +6,7 @@ import Process from "./components/sections/Process";
 import Testimonial from "./components/sections/Testimonial";
 import Pricing from "./components/sections/Pricing";
 import FAQ from "./components/sections/FAQ";
+import SpotlightCard from "./components/SpotlightCard";
 
 export default function Home() {
   return (
@@ -86,11 +87,9 @@ export default function Home() {
           <div className="mt-12 space-y-16 md:space-y-24">
             <article className="flex flex-col-reverse gap-8 md:flex-row md:items-center md:gap-12">
               <div className="flex-1">
-                <a
+                <SpotlightCard
                   href="https://www.omnicontent.de"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+                  ariaLabel="OmniContent Case Study öffnen"
                 >
                   <Image
                     src="https://image.thum.io/get/width/1200/crop/800/maxAge/12/https://www.omnicontent.de/?v=2026070301"
@@ -98,7 +97,7 @@ export default function Home() {
                     width={1200}
                     height={800}
                     unoptimized
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:md:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:md:scale-[1.04]"
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />
                   <div
@@ -107,12 +106,12 @@ export default function Home() {
                   />
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute bottom-5 left-5 hidden translate-y-3 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-semibold text-white opacity-0 backdrop-blur-md transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 md:inline-flex"
+                    className="pointer-events-none absolute bottom-5 left-5 z-10 hidden translate-y-3 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-semibold text-white opacity-0 backdrop-blur-md transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 md:inline-flex"
                   >
                     Case Study ansehen
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
-                </a>
+                </SpotlightCard>
               </div>
               <div className="flex-1">
                 <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/50">
@@ -133,11 +132,9 @@ export default function Home() {
 
             <article className="flex flex-col-reverse gap-8 md:flex-row-reverse md:items-center md:gap-12">
               <div className="flex-1">
-                <a
+                <SpotlightCard
                   href="https://www.prostatalk.de"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+                  ariaLabel="ProstaTalk Case Study öffnen"
                 >
                   <Image
                     src="https://image.thum.io/get/width/1200/crop/800/maxAge/12/https://www.prostatalk.de/?v=2026070301"
@@ -145,7 +142,7 @@ export default function Home() {
                     width={1200}
                     height={800}
                     unoptimized
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:md:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:md:scale-[1.04]"
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />
                   <div
@@ -154,12 +151,12 @@ export default function Home() {
                   />
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute bottom-5 left-5 hidden translate-y-3 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-semibold text-white opacity-0 backdrop-blur-md transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 md:inline-flex"
+                    className="pointer-events-none absolute bottom-5 left-5 z-10 hidden translate-y-3 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-semibold text-white opacity-0 backdrop-blur-md transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 md:inline-flex"
                   >
                     Case Study ansehen
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
-                </a>
+                </SpotlightCard>
               </div>
               <div className="flex-1">
                 <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/50">

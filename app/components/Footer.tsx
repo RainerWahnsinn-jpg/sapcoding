@@ -1,25 +1,42 @@
 import Link from "next/link";
+import { MapPin } from "lucide-react";
 import { CITIES } from "../lib/cities";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-black py-20">
-      {/* Regionen: interne Links für lokale SEO */}
-      <div className="mx-auto mb-14 max-w-7xl px-5 sm:px-6">
-        <p className="text-xs uppercase tracking-[0.25em] text-white/30">
-          Webdesign im Siegerland &amp; Umgebung
-        </p>
+    <footer className="relative overflow-hidden border-t border-white/5 bg-black py-20">
+      {/* Dezenter Ambient-Glow im Hintergrund */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(99,102,241,0.10),rgba(0,0,0,0))]"
+      />
+
+      {/* Regionen: interne Links für lokale SEO als glühende Tech-Badges */}
+      <div className="mx-auto mb-16 max-w-7xl px-5 sm:px-6">
+        <div className="flex items-center gap-3">
+          <span className="h-px w-8 bg-linear-to-r from-transparent to-cyan-300/60" />
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/40">
+            Webdesign im Siegerland &amp; Umgebung
+          </p>
+        </div>
+
         <nav
           aria-label="Regionen"
-          className="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-xs tracking-wider text-white/40"
+          className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
         >
           {CITIES.map((city) => (
             <Link
               key={city.slug}
               href={`/webdesign-${city.slug}`}
-              className="transition hover:text-white"
+              className="group relative isolate flex items-center gap-2.5 overflow-hidden rounded-xl border border-white/10 bg-white/2 px-4 py-3 text-xs font-medium tracking-wider text-white/50 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-[1.03] hover:border-white/25 hover:bg-white/5 hover:text-white hover:shadow-[0_8px_30px_-8px_rgba(56,189,248,0.35)]"
             >
-              Webdesign {city.name}
+              {/* Glühende Lichtkante beim Hover */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -z-10 rounded-xl bg-[radial-gradient(80%_120%_at_0%_0%,rgba(56,189,248,0.18),rgba(0,0,0,0))] opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
+              />
+              <MapPin className="h-3.5 w-3.5 shrink-0 text-white/30 transition-colors duration-300 group-hover:text-cyan-300" />
+              <span className="truncate">Webdesign {city.name}</span>
             </Link>
           ))}
         </nav>

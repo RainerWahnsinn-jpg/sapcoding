@@ -38,26 +38,21 @@ export default function Hero() {
               Vorhaben unverbindlich und liefern messbare Ergebnisse.
             </p>
 
-            <div className="mt-10 flex flex-col gap-3 text-sm text-white/40 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-8 lg:gap-y-3">
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
-                Next.js
-              </span>
-              <span className="hidden h-1 w-1 rounded-full bg-white/20 lg:block" />
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                Supabase
-              </span>
-              <span className="hidden h-1 w-1 rounded-full bg-white/20 lg:block" />
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
-                KI-Integrationen
-              </span>
-              <span className="hidden h-1 w-1 rounded-full bg-white/20 lg:block" />
-              <span className="inline-flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                Tailwind v4
-              </span>
+            <div className="mt-10 flex flex-wrap gap-2.5 sm:gap-3">
+              {[
+                { label: "Next.js", dot: "bg-white", glow: "hover:border-white/40 hover:shadow-[0_0_24px_-4px_rgba(255,255,255,0.35)]" },
+                { label: "Supabase", dot: "bg-emerald-400", glow: "hover:border-emerald-400/50 hover:shadow-[0_0_24px_-4px_rgba(52,211,153,0.45)]" },
+                { label: "KI-Integrationen", dot: "bg-violet-400", glow: "hover:border-violet-400/50 hover:shadow-[0_0_24px_-4px_rgba(167,139,250,0.45)]" },
+                { label: "Tailwind v4", dot: "bg-cyan-400", glow: "hover:border-cyan-400/50 hover:shadow-[0_0_24px_-4px_rgba(34,211,238,0.45)]" },
+              ].map((tech) => (
+                <span
+                  key={tech.label}
+                  className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/3 px-3.5 py-1.5 text-sm text-white/60 backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-white ${tech.glow}`}
+                >
+                  <span className={`h-1.5 w-1.5 rounded-full ${tech.dot}`} />
+                  {tech.label}
+                </span>
+              ))}
             </div>
           </div>
 
