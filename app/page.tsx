@@ -91,7 +91,7 @@ export default function Home() {
                   className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/5"
                 >
                   <Image
-                    src="https://image.thum.io/get/width/1200/crop/800/https://www.omnicontent.de"
+                    src="https://image.thum.io/get/width/1200/crop/800/noCache/1/https://www.omnicontent.de"
                     alt="OmniContent – B2B KI-Lead-Maschine Plattform Screenshot"
                     width={1200}
                     height={800}
@@ -137,7 +137,7 @@ export default function Home() {
                   className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-white/5"
                 >
                   <Image
-                    src="https://image.thum.io/get/width/1200/crop/800/https://www.prostatalk.de"
+                    src="https://image.thum.io/get/width/1200/crop/800/noCache/1/https://www.prostatalk.de"
                     alt="ProstaTalk – Barrierefreie Healthcare-Plattform Screenshot"
                     width={1200}
                     height={800}
