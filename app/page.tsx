@@ -12,50 +12,50 @@ import ContactForm from "./components/ContactForm";
 const projects = [
   {
     icon: Code2,
-    title: "S/4 HANA Rollout – Global Template",
+    title: "S/4 HANA Global Template – Rollout in 6 Ländern",
     description:
-      "Migration und Anpassung der kompletten ABAP-Entwicklungslandschaft für S/4 HANA: Custom Code Analyse, Remediation, Formularmigration und Neuaufbau der Schnittstellen für ein internationales Rollout-Template.",
-    tech: ["S/4 HANA", "Custom Code", "CDS Views", "Migration"],
+      "Rollout des Global Templates für die EPLAN-Tochtergesellschaften in USA, Tschechien, Slowakei, Österreich, Rumänien und Ungarn: EDI- und SD-Konzepte, Customizing, Programmierung, Adobe Forms, OData-Anbindung an Salesforce sowie Koordination der Projektmitarbeiter und Transportverwaltung.",
+    tech: ["S/4 HANA", "EDI", "SD · MM · FI", "OData", "Adobe Forms"],
     span: 2,
   },
   {
-    icon: Link2,
-    title: "EDI-Anbindungen",
+    icon: Briefcase,
+    title: "S/4 HANA Einführung EPLAN DE & CH",
     description:
-      "Komplette EDI-Landschaften mit EDIFACT, VDA und kundenspezifischen Formaten für internationale Lieferketten.",
-    tech: ["EDIFACT", "VDA", "IDoc"],
+      "Projektmitarbeit bei der S/4 HANA Einführung: EDI, Zoll & Außenhandel (AEB), Adobe Forms und SD – von der Konzeption bis zum Go-live.",
+    tech: ["S/4 HANA", "AEB", "Zoll"],
     span: 1,
   },
   {
-    icon: FileText,
-    title: "IDoc Monitor",
+    icon: Link2,
+    title: "EDI-Serialisierung zwischen Konzerngesellschaften",
     description:
-      "Monitoring-Tool zur Überwachung und Fehleranalyse von Nachrichtenflüssen inklusive automatisiertem Reprocessing.",
-    tech: ["IDoc", "ALV", "Batch"],
+      "Konzeption, Erstellung und Einführung einer Serialisierung für EDI-Schnittstellen zwischen internationalen Rittal-Gesellschaften.",
+    tech: ["EDI", "IDoc", "SAP ERP"],
     span: 1,
   },
   {
     icon: Briefcase,
     title: "Brexit-Umstellung Zoll & Außenhandel",
     description:
-      "Anpassung sämtlicher Zoll- und Außenhandelsprozesse an die neuen Rahmenbedingungen: Dokumentenlogik, Behördenschnittstellen und Präferenzabwicklung im Produktivbetrieb.",
-    tech: ["GTS", "Zoll", "SD", "MM"],
+      "Umstellung der Zoll- und Außenhandelsprozesse für Rittal Deutschland, England und Irland auf die neuen Brexit-Rahmenbedingungen – als Projektmitarbeiterin für SD und EDI im laufenden Produktivbetrieb.",
+    tech: ["Zoll", "SD", "EDI", "AEB Exportkontrolle"],
     span: 2,
   },
   {
     icon: FileText,
-    title: "Adobe Forms Suite",
+    title: "Eigene Formularsteuerung",
     description:
-      "Neugestaltung der Formularlandschaft mit Adobe Forms für SD, MM und FI inklusive Mehrsprachigkeit.",
-    tech: ["Adobe Forms", "Output Mgmt"],
+      "Konzeption und Erstellung einer Formularsteuerung im IMG-Leitfaden für Adobe Forms und Smart Forms – im Einsatz bei mehreren Kunden.",
+    tech: ["Adobe Forms", "Smart Forms", "IMG"],
     span: 1,
   },
   {
     icon: Code2,
-    title: "Custom ABAP Solutions",
+    title: "IDoc Monitor & Auslieferungsmonitor",
     description:
-      "Individuelle Entwicklungen für spezifische Geschäftsprozesse – von Reports bis zu komplexen Erweiterungen.",
-    tech: ["ABAP OO", "BAdI", "BAPI"],
+      "Neuer IDoc-Monitor zur Verarbeitung fehlerhafter IDocs sowie ein Auslieferungsmonitor mit Verladeplanung – Konzeption und Umsetzung.",
+    tech: ["IDoc", "ABAP OO", "ALV"],
     span: 1,
   },
 ];
@@ -78,7 +78,8 @@ export default function Home() {
               Ausgewählte Projekt-Highlights
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-400">
-              Ein Auszug aus über 15 Jahren SAP-Entwicklungserfahrung bei namhaften Unternehmen.
+              Ein Auszug aus über 15 Jahren SAP-Erfahrung – von internationalen
+              S/4&nbsp;HANA Rollouts bis zu eigenentwickelten Monitoring-Werkzeugen.
             </p>
           </div>
 

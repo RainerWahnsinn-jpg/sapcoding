@@ -8,9 +8,14 @@ const faqs = [
       "Nach einem ersten Gespräch zur Anforderungsklärung erstelle ich ein individuelles Angebot. Die Zusammenarbeit erfolgt remote oder vor Ort – je nach Projektanforderung. Regelmäßige Abstimmungen und transparente Kommunikation sind selbstverständlich.",
   },
   {
-    question: "Welche SAP-Modules decken Sie ab?",
+    question: "Welche SAP-Module decken Sie ab?",
     answer:
-      "Mein Schwerpunkt liegt auf SD (Sales & Distribution), MM (Materials Management) und FI (Financial Accounting). Zusätzlich bringe ich umfangreiche Erfahrung im Bereich Zoll und Außenhandel mit.",
+      "Mein Schwerpunkt liegt auf SD (Sales & Distribution), MM (Materials Management) und FI (Financial Accounting) – ergänzt um QM, WM und CO. Zusätzlich bringe ich umfangreiche Erfahrung im Bereich Zoll und Außenhandel mit, inklusive AEB-Anbindung.",
+  },
+  {
+    question: "Bieten Sie neben der Entwicklung auch Beratung an?",
+    answer:
+      "Ja. Als Consultant für EDI, SD sowie Zoll und Außenhandel unterstütze ich auch bei Konzepterstellung, Prozessoptimierung, Customizing und der Koordination von Projektteams – nicht nur bei der Programmierung.",
   },
   {
     question: "Arbeiten Sie auf Tagessatz oder projektbasiert?",

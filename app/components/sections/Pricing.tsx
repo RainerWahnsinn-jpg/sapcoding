@@ -1,4 +1,4 @@
-import { Check, Code2, FileText, Link2, ArrowUpRight } from "lucide-react";
+import { Check, Code2, FileText, Link2, Briefcase, ArrowUpRight } from "lucide-react";
 import Reveal from "../Reveal";
 
 /**
@@ -43,7 +43,20 @@ const services = [
       "RFC & OData Services",
       "Partnerprofile & Nachrichtensteuerung",
     ],
-    tech: ["IDoc", "EDIFACT", "OData", "RFC", "Proxy"],
+    tech: ["IDoc", "EDIFACT", "OData", "RFC", "AEB"],
+  },
+  {
+    icon: Briefcase,
+    name: "Consulting",
+    tagline:
+      "Beratung für EDI, SD sowie Zoll und Außenhandel – von der Prozessanalyse bis zur Projektkoordination.",
+    includes: [
+      "Konzepterstellung & Prozessoptimierung",
+      "Customizing (SD, MM, FI)",
+      "Fehleranalyse & Third-Level-Support",
+      "Koordination von Projektteams",
+    ],
+    tech: ["SD", "Zoll & ATLAS", "AEB", "Customizing", "S/4 HANA"],
   },
 ];
 
@@ -57,17 +70,17 @@ export default function Pricing() {
               Leistungen
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Meine SAP-Entwicklungsleistungen
+              Entwicklung &amp; Consulting aus einer Hand
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-400">
-              Von der ABAP-Programmierung bis zur komplexen EDI-Anbindung – ich unterstütze Sie
-              bei allen SAP-Entwicklungsthemen. Abrechnung nach Tagessatz oder Festpreis,
-              je nach Projektzuschnitt.
+              Von der ABAP-Programmierung über EDI-Anbindungen bis zur Beratung für Zoll
+              und Außenhandel – ich unterstütze Sie technisch und fachlich. Abrechnung nach
+              Tagessatz oder Festpreis, je nach Projektzuschnitt.
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-3 lg:items-stretch">
+        <div className="mt-14 grid gap-5 md:grid-cols-2 md:items-stretch">
           {services.map((service, i) => (
             <Reveal
               key={service.name}
@@ -157,6 +170,14 @@ export default function Pricing() {
                 name: "Schnittstellen & EDI",
                 description:
                   "EDI-Anbindungen, IDoc-Entwicklung, RFC und OData Services für nahtlose Systemintegration.",
+                priceCurrency: "EUR",
+                availability: "https://schema.org/InStock",
+              },
+              {
+                "@type": "Offer",
+                name: "SAP Consulting",
+                description:
+                  "Beratung für EDI, SD sowie Zoll und Außenhandel: Konzepte, Prozessoptimierung, Customizing und Projektkoordination.",
                 priceCurrency: "EUR",
                 availability: "https://schema.org/InStock",
               },

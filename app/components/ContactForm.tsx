@@ -26,6 +26,7 @@ const SUBJECT_OPTIONS = [
   { value: "Formulare", label: "Formulare (Adobe Forms / Smart Forms)" },
   { value: "Schnittstellen", label: "Schnittstellen (EDI / IDoc / RFC)" },
   { value: "S/4 HANA", label: "S/4 HANA Transformation" },
+  { value: "Consulting", label: "Consulting (EDI / SD / Zoll & Außenhandel)" },
   { value: "Sonstiges", label: "Sonstiges SAP-Projekt" },
 ];
 

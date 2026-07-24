@@ -31,7 +31,7 @@ export default function Hero() {
         <div className="flex flex-col">
           <p className="inline-flex w-fit items-center gap-2.5 rounded-md border border-slate-700/70 bg-slate-900/60 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-slate-400 backdrop-blur-sm">
             <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-            Freiberufliche SAP-Entwicklung seit 2008
+            SAP-Entwicklung &amp; Consulting · seit 2008 im SAP-Umfeld
           </p>
 
           <h1 className="mt-8 text-4xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
@@ -41,21 +41,28 @@ export default function Hero() {
           </h1>
 
           <p className="mt-7 max-w-xl text-lg leading-8 text-slate-400">
-            Senior-Expertin für ABAP&nbsp;OO, EDI-Schnittstellen und Adobe&nbsp;Forms.
-            Ich übernehme die Themen, die im S/4&nbsp;HANA-Projekt liegenbleiben – von
-            der Analyse bis zum Go-live.
+            Senior-Expertin für ABAP&nbsp;OO, EDI-Schnittstellen und Adobe&nbsp;Forms –
+            Entwicklung und Consulting aus einer Hand. Ich übernehme die Themen, die im
+            S/4&nbsp;HANA-Projekt liegenbleiben – vom Konzept bis zum Go-live.
           </p>
 
           {/* Kennzahlen als nüchterne Leiste statt Neon-Pills */}
           <dl className="mt-10 grid max-w-lg grid-cols-3 gap-px overflow-hidden rounded-lg border border-slate-800 bg-slate-800">
-            {["15+", "10+", "SD·MM·FI"].map((stat) => (
-              <div key={stat} className="bg-slate-950/80 px-4 py-4 text-center">
-                <dt className="text-lg font-semibold tracking-tight text-white">
-                  {stat}
-                </dt>
-                <dd className="mt-1 text-[11px] uppercase tracking-[0.14em] text-slate-500">
-                  {stat}
+            {[
+              { value: "15+", label: "Jahre SAP" },
+              { value: "25+", label: "Projekte" },
+              { value: "SD·MM·FI", label: "Modul-Fokus" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="flex flex-col bg-slate-950/80 px-4 py-4 text-center"
+              >
+                <dd className="order-1 text-lg font-semibold tracking-tight text-white">
+                  {stat.value}
                 </dd>
+                <dt className="order-2 mt-1 text-[11px] uppercase tracking-[0.14em] text-slate-500">
+                  {stat.label}
+                </dt>
               </div>
             ))}
           </dl>
@@ -119,7 +126,7 @@ export default function Hero() {
                   Sabrina Knaup
                 </p>
                 <p className="mt-0.5 text-xs tracking-wide text-cyan-400/90">
-                  SAP Development Expert · ABAP Consultant
+                  SAP Development Expert · EDI &amp; Zoll Consultant
                 </p>
               </div>
             </div>

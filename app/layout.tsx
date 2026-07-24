@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Sabrina Knaup – SAP Development Expert",
   },
   description:
-    "Externe SAP-Expertin mit 15+ Jahren Erfahrung in ABAP, EDI-Schnittstellen, Adobe Forms und Modulen SD, MM, FI. Maßgeschneiderte SAP-Entwicklung, die Ihnen den Tag rettet.",
+    "SAP-Entwicklung & Consulting: 15+ Jahre Erfahrung in ABAP, EDI-Schnittstellen, Adobe Forms sowie Zoll und Außenhandel. Beratung und Entwicklung für SD, MM, FI – remote und vor Ort.",
   keywords: [
     // SAP Kernkompetenzen
     "SAP Entwicklung",
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     siteName: "Sabrina Knaup | SAP Development Expert",
     title: "SAP Entwicklung & ABAP Expertin | Sabrina Knaup",
     description:
-      "Externe SAP-Expertin mit 15+ Jahren Erfahrung in ABAP, EDI-Schnittstellen und Adobe Forms. Maßgeschneiderte SAP-Entwicklung für Ihr Unternehmen.",
+      "SAP-Entwicklung & Consulting: 15+ Jahre Erfahrung in ABAP, EDI-Schnittstellen, Adobe Forms sowie Zoll und Außenhandel.",
     images: [
       {
         url: "https://sapcoding.de/og-image.png",
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SAP Entwicklung & ABAP Expertin | Sabrina Knaup",
     description:
-      "Externe SAP-Expertin mit 15+ Jahren Erfahrung in ABAP, EDI-Schnittstellen und Adobe Forms.",
+      "SAP-Entwicklung & Consulting: 15+ Jahre Erfahrung in ABAP, EDI-Schnittstellen und Adobe Forms.",
     images: ["https://sapcoding.de/og-image.png"],
   },
   alternates: {
@@ -131,14 +131,14 @@ export default function RootLayout({
               image: "https://www.sapcoding.de/og-image.png",
               logo: "https://www.sapcoding.de/og-image.png",
               description:
-                "Externe SAP-Expertin mit 15+ Jahren Erfahrung. Spezialisiert auf ABAP, EDI-Schnittstellen, Adobe Forms und Module SD, MM, FI. Maßgeschneiderte SAP-Entwicklung für Ihr Unternehmen.",
+                "SAP-Entwicklung & Consulting mit 15+ Jahren Erfahrung. Spezialisiert auf ABAP, EDI-Schnittstellen, Adobe Forms, Zoll und Außenhandel sowie die Module SD, MM, FI.",
               url: "https://www.sapcoding.de",
               email: "Sabrina.Knaup@SAPCoding.de",
               telephone: "+49-160-98427523",
               founder: {
                 "@type": "Person",
                 name: "Sabrina Knaup",
-                jobTitle: "SAP Development Expert & ABAP Consultant",
+                jobTitle: "SAP Development Expert · EDI & Zoll Consultant",
               },
               knowsAbout: [
                 "SAP Entwicklung",
