@@ -178,31 +178,27 @@ export async function submitPortfolioLead(formData: FormData): Promise<LeadResul
   // Step 2: Send notification email via Resend
   try {
     const { error: resendError } = await resend.emails.send({
-      from: "Constantin-Felix Weib <team@constantin-felix.de>",
-      to: "Constantin.Weib@hotmail.com",
-      subject: "Neue Projektanfrage von der Website!",
+      from: "SAPCoding.de <noreply@sapcoding.de>",
+      to: "Sabrina.Knaup@SAPCoding.de",
+      subject: "Neue SAP-Projektanfrage von der Website!",
       text: [
-        "Neue Anfrage von der Website:",
+        "Neue SAP-Projektanfrage von SAPCoding.de:",
         "",
         `Name: ${name}`,
         `E-Mail: ${email}`,
         `Unternehmen: ${company || "-"}`,
         `Telefon: ${phone || "-"}`,
-        `Interesse: ${interest || "-"}`,
-        `Detail: ${detail || "-"}`,
         "",
-        "Anliegen:",
+        "Projektbeschreibung:",
         message,
       ].join("\n"),
       html: `
-        <h2>Neue Anfrage von der Website</h2>
+        <h2>Neue SAP-Projektanfrage von SAPCoding.de</h2>
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
         <p><strong>Unternehmen:</strong> ${escapeHtml(company || "-")}</p>
         <p><strong>Telefon:</strong> ${escapeHtml(phone || "-")}</p>
-        <p><strong>Interesse:</strong> ${escapeHtml(interest || "-")}</p>
-        <p><strong>Detail:</strong> ${escapeHtml(detail || "-")}</p>
-        <p><strong>Anliegen:</strong></p>
+        <p><strong>Projektbeschreibung:</strong></p>
         <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
       `,
     });

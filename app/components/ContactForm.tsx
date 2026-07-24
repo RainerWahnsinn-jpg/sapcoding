@@ -11,7 +11,7 @@ const fieldClass =
 const wrapperClass =
   "block space-y-2 text-sm text-white/60 transition-colors duration-300 focus-within:text-white/90 [&:focus-within_input]:border-violet-400/60 [&:focus-within_input]:shadow-[0_0_28px_rgba(124,58,237,0.18)] [&:focus-within_textarea]:border-violet-400/60 [&:focus-within_textarea]:shadow-[0_0_28px_rgba(124,58,237,0.18)]";
 
-type Interest = "" | "webseite" | "plattform" | "ki";
+type Interest = "" | "abap" | "formulare" | "schnittstellen" | "sonstiges";
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -96,65 +96,30 @@ export default function ContactForm() {
           <option value="" className="bg-zinc-900">
             Bitte auswählen (optional)
           </option>
-          <option value="webseite" className="bg-zinc-900">
-            Neue Webseite / Relaunch
+          <option value="abap" className="bg-zinc-900">
+            ABAP Entwicklung
           </option>
-          <option value="plattform" className="bg-zinc-900">
-            Business-Plattform / interne Tools
+          <option value="formulare" className="bg-zinc-900">
+            Formulare (Adobe Forms / Smart Forms)
           </option>
-          <option value="ki" className="bg-zinc-900">
-            KI-Integration / Automatisierung
+          <option value="schnittstellen" className="bg-zinc-900">
+            Schnittstellen (EDI / IDoc / RFC)
+          </option>
+          <option value="sonstiges" className="bg-zinc-900">
+            Sonstiges SAP-Projekt
           </option>
         </select>
       </label>
 
-      {interest === "plattform" && (
-        <label className={wrapperClass}>
-          Wie viele Bewerbungen erhalten Sie aktuell pro Monat im Schnitt?
-          <input
-            name="detail_bewerbungen"
-            type="text"
-            autoComplete="off"
-            className={fieldClass}
-            placeholder="z. B. 10–20 pro Monat"
-          />
-        </label>
-      )}
-
-      {interest === "ki" && (
-        <label className={wrapperClass}>
-          Welcher Prozess oder welches Tool raubt Ihnen aktuell die meiste Zeit?
-          <input
-            name="detail_ki"
-            type="text"
-            autoComplete="off"
-            className={fieldClass}
-            placeholder="z. B. Angebotserstellung, E-Mail-Sortierung"
-          />
-        </label>
-      )}
-
-      {interest === "webseite" && (
-        <label className={wrapperClass}>
-          Haben Sie bereits eine Webseite? Wenn ja, welche Adresse?
-          <input
-            name="detail_webseite"
-            type="text"
-            autoComplete="off"
-            className={fieldClass}
-            placeholder="z. B. www.ihre-firma.de (oder „noch keine“)"
-          />
-        </label>
-      )}
-
       <label className={wrapperClass}>
-        Ihr Vorhaben / Anliegen *
+        Ihr SAP-Projekt / Anliegen *
         <textarea
           required
           name="message"
           maxLength={1000}
           rows={5}
           className={`${fieldClass} resize-none`}
+          placeholder="Beschreiben Sie kurz Ihr SAP-Entwicklungsprojekt..."
         />
       </label>
 

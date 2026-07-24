@@ -3,34 +3,34 @@ import Reveal from "../Reveal";
 
 const faqs = [
   {
-    question: "Was kostet es, eine Webseite erstellen zu lassen?",
+    question: "Wie läuft die Zusammenarbeit mit einer externen SAP-Entwicklerin ab?",
     answer:
-      "Der Preis richtet sich nach Umfang und Funktionen. Eine moderne Unternehmens-Webseite für Handwerk oder Mittelstand startet im niedrigen vierstelligen Bereich. Nach einem kostenlosen Erstgespräch erhalten Sie ein transparentes Festpreis-Angebot – ohne versteckte Kosten.",
+      "Nach einem ersten Gespräch zur Anforderungsklärung erstelle ich ein individuelles Angebot. Die Zusammenarbeit erfolgt remote oder vor Ort – je nach Projektanforderung. Regelmäßige Abstimmungen und transparente Kommunikation sind selbstverständlich.",
   },
   {
-    question: "Wie lange dauert die Erstellung einer Webseite?",
+    question: "Welche SAP-Modules decken Sie ab?",
     answer:
-      "Eine klassische Unternehmens-Webseite ist in der Regel innerhalb von 2 bis 4 Wochen online. Komplexere Web-Apps oder KI-Integrationen benötigen etwas länger. Den genauen Zeitplan legen wir gemeinsam im Konzept fest.",
+      "Mein Schwerpunkt liegt auf SD (Sales & Distribution), MM (Materials Management) und FI (Financial Accounting). Zusätzlich bringe ich umfangreiche Erfahrung im Bereich Zoll und Außenhandel mit.",
   },
   {
-    question: "Bieten Sie Webdesign auch außerhalb von Siegen an?",
+    question: "Arbeiten Sie auf Tagessatz oder projektbasiert?",
     answer:
-      "Ja. Mein Sitz ist in Wilnsdorf bei Siegen und ich betreue bevorzugt Kunden in Siegen-Wittgenstein und ganz Südwestfalen (u. a. Kreuztal, Netphen, Freudenberg, Olpe). Die Zusammenarbeit funktioniert dank digitaler Prozesse aber auch deutschlandweit reibungslos.",
+      "Beides ist möglich. Bei klar definierten Projekten biete ich gerne einen Festpreis an. Für laufende Unterstützung oder Projekte mit variablem Umfang arbeite ich auf Tagessatzbasis. Das besprechen wir individuell.",
   },
   {
-    question: "Sind die Webseiten für Smartphones optimiert?",
+    question: "Können Sie bei S/4 HANA Migrationen unterstützen?",
     answer:
-      "Absolut. Jede Webseite wird mobil-first entwickelt, lädt blitzschnell und sieht auf Smartphone, Tablet und Desktop einwandfrei aus. Schnelle Ladezeiten und Mobiloptimierung sind zudem wichtige Ranking-Faktoren bei Google.",
+      "Ja, ich habe Erfahrung mit S/4 HANA Einführungen und Migrationen. Das umfasst die Anpassung bestehender ABAP-Entwicklungen, Formularmigration und die Überarbeitung von Schnittstellen für die neue Systemlandschaft.",
   },
   {
-    question: "Wird meine Webseite bei Google gefunden?",
+    question: "Wie schnell können Sie in ein Projekt einsteigen?",
     answer:
-      "Suchmaschinenoptimierung (SEO) ist von Anfang an fester Bestandteil. Sauberer Code, schnelle Ladezeiten, strukturierte Daten und lokale SEO für die Region Siegen sorgen dafür, dass potenzielle Kunden Sie finden.",
+      "Je nach aktueller Auslastung kann ich oft innerhalb von 1-2 Wochen starten. Bei dringenden Anfragen finden wir gemeinsam eine Lösung – sprechen Sie mich einfach an.",
   },
   {
-    question: "Was macht die KI-Integration für mein Unternehmen?",
+    question: "Bieten Sie auch Support und Wartung für bestehende Entwicklungen?",
     answer:
-      "KI kann Routineaufgaben automatisieren – von der Content-Erstellung über die Klassifizierung von Anfragen bis hin zu smarten Assistenten auf Ihrer Webseite. Das spart Zeit und schafft Freiraum für Ihr Kerngeschäft.",
+      "Ja, ich übernehme auch die Pflege und Weiterentwicklung bestehender ABAP-Programme, Formulare und Schnittstellen. Eine saubere Dokumentation und Übergabe ist dabei selbstverständlich.",
   },
 ];
 
@@ -44,11 +44,10 @@ export default function FAQ() {
               FAQ
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Häufige Fragen zu Webdesign in Siegen.
+              Häufige Fragen zur SAP-Entwicklung
             </h2>
             <p className="mt-4 text-base leading-7 text-white/70">
-              Antworten rund um Kosten, Ablauf und Ergebnisse – wenn Sie eine Webseite erstellen
-              lassen möchten.
+              Antworten rund um Zusammenarbeit, Leistungen und Ablauf.
             </p>
           </Reveal>
         </div>

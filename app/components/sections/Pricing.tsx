@@ -1,53 +1,55 @@
-import { Check, MonitorSmartphone, Rocket, Bot, ArrowUpRight } from "lucide-react";
+import { Check, Code2, FileText, Link2, ArrowUpRight } from "lucide-react";
 import Reveal from "../Reveal";
 
 const tiers = [
   {
-    icon: MonitorSmartphone,
-    name: "Digitale Visitenkarte & Relaunch",
+    icon: Code2,
+    name: "ABAP Entwicklung",
     tagline:
-      "Blitzschnelle Next.js-Webseiten für maximale Sichtbarkeit und einen professionellen Auftritt in der Region.",
+      "Professionelle ABAP & ABAP OO Programmierung für Ihre individuellen SAP-Anforderungen.",
     includes: [
-      "Individuelles Design",
-      "Für Smartphones optimiert",
-      "DSGVO-konform",
-      "Extrem schnelle Ladezeiten für Google",
+      "Kundenspezifische Reports & Programme",
+      "Erweiterungen (BADIs, BAPIs, User Exits)",
+      "Performance-Optimierung",
+      "Code Reviews & Refactoring",
     ],
-    price: "ab 1.800 €",
-    cta: "Projekt anfragen",
+    price: "Auf Anfrage",
+    priceNote: "Tagessatz oder projektbasiert",
+    cta: "Anfrage senden",
     featured: false,
     accent: "cyan",
   },
   {
-    icon: Rocket,
-    name: "Business- & Wachstumsplattform",
+    icon: FileText,
+    name: "Formulare & Outputs",
     tagline:
-      "Smarte Web-Anwendungen mit Supabase-Datenbank, die aktiv für Ihr Unternehmen arbeiten.",
+      "Adobe Forms und Smart Forms für professionelle Geschäftsdokumente in allen Modulen.",
     includes: [
-      "Digitale Bewerber-Tools (papierlose Mitarbeitergewinnung)",
-      "Interne Portale statt Zettelwirtschaft & Excel-Chaos",
-      "Sichere Supabase-Datenbank",
-      "Individuelle Workflows",
+      "Adobe Forms Entwicklung",
+      "Smart Forms Erstellung",
+      "Formular-Migration",
+      "Mehrsprachige Dokumente",
     ],
-    price: "ab 3.500 €",
-    cta: "Projekt anfragen",
+    price: "Auf Anfrage",
+    priceNote: "Tagessatz oder projektbasiert",
+    cta: "Anfrage senden",
     featured: true,
     accent: "indigo",
   },
   {
-    icon: Bot,
-    name: "KI-Integration & Workflow-Automatisierung",
+    icon: Link2,
+    name: "Schnittstellen & EDI",
     tagline:
-      "Maßgeschneiderte KI-Schnittstellen und Software-Lösungen, die Routineaufgaben komplett übernehmen.",
+      "Nahtlose Integration Ihrer Systeme durch EDI, IDoc, RFC und OData Schnittstellen.",
     includes: [
-      "Intelligente Chatbots für Ihre Website",
-      "Automatisierte B2B-Lead-Generierung (wie mein OmniContent-Radar)",
-      "Automatisierte E-Mail-Verarbeitung",
-      "Massive Zeitersparnis für Ihr Team",
+      "EDI-Anbindungen (EDIFACT, VDA, etc.)",
+      "IDoc-Entwicklung & Monitoring",
+      "RFC & OData Services",
+      "Partnerprofile & Nachrichtensteuerung",
     ],
-    price: "Individuell",
-    priceNote: "nach Projektumfang – feste Meilensteine oder Tagessatz",
-    cta: "Vorhaben analysieren lassen",
+    price: "Auf Anfrage",
+    priceNote: "Tagessatz oder projektbasiert",
+    cta: "Anfrage senden",
     featured: false,
     accent: "violet",
   },
@@ -55,19 +57,19 @@ const tiers = [
 
 export default function Pricing() {
   return (
-    <section id="preise" className="relative border-t border-white/10 bg-black/20">
+    <section id="leistungen" className="relative border-t border-white/10 bg-black/20">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:px-10">
         <div className="max-w-2xl">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/50">
-              Preise
+              Leistungen
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Was kostet eine professionelle Website?
+              Meine SAP-Entwicklungsleistungen
             </h2>
             <p className="mt-4 text-base leading-7 text-white/70">
-              Transparente Startpreise für Webdesign in Siegen – vom professionellen Auftritt bis
-              zur KI-Automatisierung. Sie erhalten immer ein festes Angebot ohne versteckte Kosten.
+              Von der ABAP-Programmierung bis zur komplexen EDI-Anbindung – ich unterstütze Sie
+              bei allen SAP-Entwicklungsthemen. Sprechen Sie mich an für ein individuelles Angebot.
             </p>
           </Reveal>
         </div>
@@ -134,8 +136,8 @@ export default function Pricing() {
 
         <Reveal>
           <p className="mt-10 text-center text-sm text-white/50">
-            Sie sind unsicher, welches Paket passt? Fordern Sie unverbindlich ein Angebot zur
-            Website-Erstellung an – oder lassen Sie Ihr KI-Vorhaben analysieren.
+            Sie haben ein konkretes SAP-Projekt? Kontaktieren Sie mich für ein unverbindliches
+            Gespräch und ein maßgeschneidertes Angebot.
           </p>
         </Reveal>
       </div>
@@ -146,41 +148,29 @@ export default function Pricing() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "OfferCatalog",
-            name: "Webdesign & KI Pakete – Siegen",
+            name: "SAP Entwicklungsleistungen – Sabrina Knaup",
             itemListElement: [
               {
                 "@type": "Offer",
-                name: "Digitale Visitenkarte & Relaunch",
+                name: "ABAP Entwicklung",
                 description:
-                  "Blitzschnelle, mobiloptimierte und DSGVO-konforme Next.js-Webseite für einen professionellen Auftritt in der Region Siegen.",
+                  "Professionelle ABAP & ABAP OO Programmierung: kundenspezifische Reports, Erweiterungen mit BADIs und BAPIs, Performance-Optimierung.",
                 priceCurrency: "EUR",
-                price: "1800",
-                priceSpecification: {
-                  "@type": "PriceSpecification",
-                  minPrice: "1800",
-                  priceCurrency: "EUR",
-                },
                 availability: "https://schema.org/InStock",
               },
               {
                 "@type": "Offer",
-                name: "Business- & Wachstumsplattform",
+                name: "Formulare & Outputs",
                 description:
-                  "Individuelle Web-App mit Supabase-Datenbank: digitale Bewerber-Tools und interne Portale statt Zettelwirtschaft und Excel-Chaos.",
+                  "Adobe Forms und Smart Forms Entwicklung für professionelle Geschäftsdokumente in SD, MM, FI und weiteren Modulen.",
                 priceCurrency: "EUR",
-                price: "3500",
-                priceSpecification: {
-                  "@type": "PriceSpecification",
-                  minPrice: "3500",
-                  priceCurrency: "EUR",
-                },
                 availability: "https://schema.org/InStock",
               },
               {
                 "@type": "Offer",
-                name: "KI-Integration & Workflow-Automatisierung",
+                name: "Schnittstellen & EDI",
                 description:
-                  "Maßgeschneiderte KI-Schnittstellen: intelligente Chatbots, automatisierte B2B-Lead-Generierung und automatisierte E-Mail-Verarbeitung.",
+                  "EDI-Anbindungen, IDoc-Entwicklung, RFC und OData Services für nahtlose Systemintegration.",
                 priceCurrency: "EUR",
                 availability: "https://schema.org/InStock",
               },

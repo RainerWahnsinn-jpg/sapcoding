@@ -26,11 +26,12 @@ export default function DatenschutzPage() {
               Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
             </p>
             <p className="mt-4 font-semibold text-white/90">Verantwortlicher</p>
-            <p>Constantin-Felix Weib</p>
+            <p>Sabrina Knaup</p>
+            <p>Elsterweg 2, 35745 Herborn</p>
             <p>
               E-Mail:{" "}
-              <a className="underline" href="mailto:Constantin.Weib@hotmail.com">
-                Constantin.Weib@hotmail.com
+              <a className="underline" href="mailto:Sabrina.Knaup@SAPCoding.de">
+                Sabrina.Knaup@SAPCoding.de
               </a>
             </p>
           </div>
@@ -95,8 +96,8 @@ export default function DatenschutzPage() {
             </div>
             <p className="mt-4">
               Wenden Sie sich hierzu oder zu weiteren Fragen zum Thema Datenschutz jederzeit an:{" "}
-              <a className="underline" href="mailto:Constantin.Weib@hotmail.com">
-                Constantin.Weib@hotmail.com
+              <a className="underline" href="mailto:Sabrina.Knaup@SAPCoding.de">
+                Sabrina.Knaup@SAPCoding.de
               </a>
             </p>
           </div>

@@ -22,28 +22,28 @@ export default function Hero() {
           <div className="flex flex-col">
             <p className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-white/60 backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-linear-to-r from-violet-400 to-cyan-300" />
-              Web + KI Agentur — Siegen
+              SAP Development Expert — 15+ Jahre Erfahrung
             </p>
 
             <h1 className="text-4xl font-semibold leading-[1.08] tracking-tighter text-white md:text-6xl lg:text-7xl">
-              Lassen Sie uns Ihre{" "}
+              Ihre Expertin für{" "}
               <span className="bg-linear-to-r from-violet-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
-                digitale Infrastruktur
-              </span>{" "}
-              aufbauen.
+                maßgeschneiderte SAP-Entwicklung
+              </span>
+              , die Ihnen den Tag rettet.
             </h1>
 
             <p className="mt-8 max-w-xl text-lg leading-8 text-white/60">
-              Egal ob Web-App, B2B-Plattform oder Automatisierung – wir analysieren Ihr
-              Vorhaben unverbindlich und liefern messbare Ergebnisse.
+              Unabhängige Spezialistin für ABAP, EDI-Schnittstellen und Adobe Forms.
+              Langjährige Expertise in den Modulen SD, MM und FI.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-2.5 sm:gap-3">
               {[
-                { label: "Next.js", dot: "bg-white", glow: "hover:border-white/40 hover:shadow-[0_0_24px_-4px_rgba(255,255,255,0.35)]" },
-                { label: "Supabase", dot: "bg-emerald-400", glow: "hover:border-emerald-400/50 hover:shadow-[0_0_24px_-4px_rgba(52,211,153,0.45)]" },
-                { label: "KI-Integrationen", dot: "bg-violet-400", glow: "hover:border-violet-400/50 hover:shadow-[0_0_24px_-4px_rgba(167,139,250,0.45)]" },
-                { label: "Tailwind v4", dot: "bg-cyan-400", glow: "hover:border-cyan-400/50 hover:shadow-[0_0_24px_-4px_rgba(34,211,238,0.45)]" },
+                { label: "ABAP & ABAP OO", dot: "bg-white", glow: "hover:border-white/40 hover:shadow-[0_0_24px_-4px_rgba(255,255,255,0.35)]" },
+                { label: "Adobe Forms", dot: "bg-emerald-400", glow: "hover:border-emerald-400/50 hover:shadow-[0_0_24px_-4px_rgba(52,211,153,0.45)]" },
+                { label: "EDI & IDoc", dot: "bg-violet-400", glow: "hover:border-violet-400/50 hover:shadow-[0_0_24px_-4px_rgba(167,139,250,0.45)]" },
+                { label: "SD / MM / FI", dot: "bg-cyan-400", glow: "hover:border-cyan-400/50 hover:shadow-[0_0_24px_-4px_rgba(34,211,238,0.45)]" },
               ].map((tech) => (
                 <span
                   key={tech.label}
@@ -64,10 +64,10 @@ export default function Hero() {
             className="scroll-mt-24 bg-white/5 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] p-5 sm:p-8 lg:p-12 relative z-10"
           >
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/50">
-              Projektanfrage
+              Kontakt aufnehmen
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white">
-              Erzählen Sie uns von Ihrem Vorhaben.
+              Erzählen Sie mir von Ihrem SAP-Projekt.
             </h2>
             <div className="mt-8">
               <ContactForm />

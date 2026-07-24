@@ -6,10 +6,8 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "/#about", label: "Über mich" },
-  { href: "/#services", label: "Services" },
-  { href: "/#ablauf", label: "Ablauf" },
-  { href: "/#cases", label: "Referenzen" },
-  { href: "/#preise", label: "Preise" },
+  { href: "/#leistungen", label: "Leistungen" },
+  { href: "/#projekte", label: "Projekte" },
   { href: "/#faq", label: "FAQ" },
 ];
 
@@ -24,7 +22,7 @@ export default function Header() {
           href="/"
           onClick={() => setIsOpen(false)}
         >
-          Constantin-Felix Weib
+          SAPCoding.de
         </Link>
 
         {/* Desktop-Navigation */}
@@ -46,7 +44,7 @@ export default function Header() {
             href="/#kontakt"
             onClick={() => setIsOpen(false)}
           >
-            Projekt anfragen
+            Kontakt aufnehmen
           </Link>
 
           {/* Mobile-Menü-Button */}

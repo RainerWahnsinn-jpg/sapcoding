@@ -1,27 +1,27 @@
 import Image from "next/image";
-import { Brain, Code2, GraduationCap, Workflow } from "lucide-react";
+import { Code2, FileText, Link2, Briefcase } from "lucide-react";
 import Reveal from "../Reveal";
 
 const highlights = [
   {
     icon: Code2,
-    title: "Full-Stack Entwicklung",
-    text: "Skalierbare Web-Apps von der Datenbank bis zur UI – mit Next.js, React, TypeScript & Supabase.",
+    title: "ABAP & ABAP OO",
+    text: "Professionelle Programmierung, Erweiterungen mit BADIs, BAPIs und kundenspezifische Entwicklungen.",
   },
   {
-    icon: Brain,
-    title: "KI-Integration",
-    text: "Intelligente Features durch moderne KI-Schnittstellen für automatisierte Content- & Prozessoptimierung.",
+    icon: FileText,
+    title: "Formulare",
+    text: "Adobe Forms und Smart Forms für professionelle Geschäftsdokumente in SD, MM und FI.",
   },
   {
-    icon: Workflow,
-    title: "Enterprise-Erfahrung",
-    text: "Als SAP Product Owner steuere ich komplexe ERP-Landschaften im Konzernumfeld – ich kenne beide Welten.",
+    icon: Link2,
+    title: "Schnittstellen",
+    text: "EDI-Anbindungen, IDoc-Entwicklung, RFC und OData für nahtlose Systemintegration.",
   },
   {
-    icon: GraduationCap,
-    title: "Fundiertes Studium",
-    text: "Bachelor of Arts in BWL (Fachrichtung Wirtschaftsinformatik), dual absolviert bei der Friedhelm Loh Group – mit Thesis zu AI Governance & dem EU AI Act.",
+    icon: Briefcase,
+    title: "Modul-Expertise",
+    text: "Tiefgreifende Erfahrung in SD, MM, FI sowie Zoll und Außenhandel – seit 2008 im SAP-Umfeld.",
   },
 ];
 
@@ -46,8 +46,8 @@ export default function About() {
               {/* Profilfoto im inneren Kreis */}
               <div className="absolute inset-1.5 overflow-hidden rounded-full bg-zinc-950">
                 <Image
-                  src="/cfw.jpg"
-                  alt="Constantin-Felix Weib"
+                  src="/Sabrina.jpg"
+                  alt="Sabrina Knaup"
                   fill
                   sizes="(min-width: 640px) 256px, 224px"
                   className="object-cover"
@@ -64,20 +64,19 @@ export default function About() {
                 Über mich
               </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Constantin-Felix Weib
+                Sabrina Knaup
               </h2>
               <p className="mt-2 text-base font-medium text-cyan-300/90">
-                Wirtschaftsinformatiker · Full-Stack Developer · Solo-Founder
+                SAP Development Expert · ABAP Consultant · Freiberuflich seit 2008
               </p>
             </Reveal>
 
             <Reveal delay={1}>
               <p className="mt-6 text-base leading-7 text-white/70">
-                Ich kenne beide Welten: die agile Steuerung komplexer ERP-Landschaften im
-                Konzernumfeld (als SAP Product Owner) und die enormen Möglichkeiten moderner,
-                leichtgewichtiger Web-Technologien. Durch meine pragmatische Hands-on-Mentalität
-                schließe ich die Lücke zwischen strategischem Prozessdesign und echter
-                Softwareentwicklung – und bringe Lösungen selbst auf die Straße.
+                Externe SAP-Expertin, die Ihnen hilft, den Tag zu überstehen. Mit über 15 Jahren 
+                Erfahrung in der SAP-Entwicklung bringe ich die Expertise mit, die Sie für Ihre 
+                komplexen Herausforderungen brauchen – ob S/4 HANA Migration, EDI-Anbindungen 
+                oder individuelle Formularentwicklung. Pragmatisch, zuverlässig und lösungsorientiert.
               </p>
             </Reveal>
 
