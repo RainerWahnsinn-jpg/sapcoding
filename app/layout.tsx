@@ -220,6 +220,9 @@ export default function RootLayout({
               priceRange: "$$",
               currenciesAccepted: "EUR",
               openingHours: "Mo-Fr 09:00-18:00",
+              sameAs: [
+                "https://www.linkedin.com/in/sabrina-knaup-60a348241/",
+              ],
             }),
           }}
         />
