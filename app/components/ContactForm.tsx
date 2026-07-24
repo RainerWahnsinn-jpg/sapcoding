@@ -12,10 +12,10 @@ const TARGET_EMAIL = "Sabrina.Knaup@SAPCoding.de";
 // STYLING KONSTANTEN
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 const fieldClass =
-  "min-h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white outline-none transition-all duration-300 placeholder:text-white/25 focus:border-cyan-300/50 focus:bg-white/[0.06] focus:shadow-[0_0_24px_rgba(34,211,238,0.12)]";
+  "min-h-12 w-full rounded-md border border-slate-700 bg-slate-950/60 px-4 py-3 text-white outline-none transition-colors duration-200 placeholder:text-slate-600 focus:border-cyan-500 focus:bg-slate-950";
 
 const wrapperClass =
-  "block space-y-2 text-sm text-white/60 transition-colors duration-300 focus-within:text-white/90 [&:focus-within_input]:border-violet-400/60 [&:focus-within_input]:shadow-[0_0_28px_rgba(124,58,237,0.18)] [&:focus-within_textarea]:border-violet-400/60 [&:focus-within_textarea]:shadow-[0_0_28px_rgba(124,58,237,0.18)] [&:focus-within_select]:border-violet-400/60 [&:focus-within_select]:shadow-[0_0_28px_rgba(124,58,237,0.18)]";
+  "block space-y-2 text-sm text-slate-400 transition-colors duration-200 focus-within:text-slate-200";
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // BETREFF-OPTIONEN
@@ -209,7 +209,7 @@ ${formData.message}`;
           className={`${fieldClass} appearance-none cursor-pointer ${errors.subject ? "!border-red-400/60" : ""}`}
         >
           {SUBJECT_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value} className="bg-zinc-900">
+            <option key={option.value} value={option.value} className="bg-slate-900">
               {option.label}
             </option>
           ))}
@@ -240,7 +240,7 @@ ${formData.message}`;
         {/* Haupt-Button: Anfrage via E-Mail */}
         <button
           type="submit"
-          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-violet-500 via-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_40px_rgba(124,58,237,0.4)] transition hover:brightness-110 hover:shadow-[0_0_60px_rgba(34,211,238,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 sm:w-auto"
+          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-cyan-500 px-7 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60 sm:w-auto"
         >
           <Send className="h-4 w-4" />
           Anfrage via E-Mail
@@ -250,7 +250,7 @@ ${formData.message}`;
         <button
           type="button"
           onClick={copyEmailToClipboard}
-          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white/70 transition hover:border-white/30 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 sm:w-auto"
+          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md border border-slate-700 bg-slate-900/60 px-6 py-3 text-sm font-medium text-slate-300 transition hover:border-slate-500 hover:bg-slate-800/60 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 sm:w-auto"
         >
           {copied ? (
             <>
@@ -267,13 +267,13 @@ ${formData.message}`;
       </div>
 
       {/* Hinweis für Nutzer ohne Mail-Programm */}
-      <p className="flex items-start gap-2 text-xs leading-5 text-white/40">
+      <p className="flex items-start gap-2 text-xs leading-5 text-slate-500">
         <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0" />
         <span>
           Der Button öffnet Ihr Standard-E-Mail-Programm. Alternativ schreiben Sie direkt an{" "}
           <a
             href={`mailto:${TARGET_EMAIL}`}
-            className="text-cyan-300/80 underline decoration-cyan-300/30 underline-offset-2 transition hover:text-cyan-300 hover:decoration-cyan-300/60"
+            className="text-cyan-400 underline decoration-cyan-500/30 underline-offset-2 transition hover:decoration-cyan-400"
           >
             {TARGET_EMAIL}
           </a>

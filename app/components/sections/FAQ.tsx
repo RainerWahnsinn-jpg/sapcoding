@@ -36,17 +36,17 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="relative border-t border-white/10">
+    <section id="faq" className="relative border-t border-slate-800 bg-slate-950">
       <div className="mx-auto max-w-4xl px-6 py-24 sm:px-10">
         <div className="max-w-2xl">
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/50">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
               FAQ
             </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Häufige Fragen zur SAP-Entwicklung
             </h2>
-            <p className="mt-4 text-base leading-7 text-white/70">
+            <p className="mt-4 text-base leading-7 text-slate-400">
               Antworten rund um Zusammenarbeit, Leistungen und Ablauf.
             </p>
           </Reveal>
@@ -59,15 +59,15 @@ export default function FAQ() {
               delay={((i % 3) + 1) as 1 | 2 | 3}
               as="div"
             >
-              <details className="group rounded-2xl border border-white/5 bg-zinc-900/50 p-5 backdrop-blur-xl transition-colors duration-300 open:border-white/20 sm:p-6">
+              <details className="group rounded-xl border border-slate-800 bg-slate-900/40 p-5 transition-colors duration-300 hover:border-slate-700 open:border-cyan-500/40 sm:p-6">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-white [&::-webkit-details-marker]:hidden">
                   {item.question}
                   <Plus
-                    className="h-5 w-5 shrink-0 text-cyan-300 transition-transform duration-300 group-open:rotate-45"
+                    className="h-5 w-5 shrink-0 text-cyan-400 transition-transform duration-300 group-open:rotate-45"
                     aria-hidden="true"
                   />
                 </summary>
-                <p className="mt-4 text-sm leading-7 text-white/70">{item.answer}</p>
+                <p className="mt-4 text-sm leading-7 text-slate-400">{item.answer}</p>
               </details>
             </Reveal>
           ))}

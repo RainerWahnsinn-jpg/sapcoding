@@ -124,42 +124,44 @@ export default async function CityPage({
   };
 
   return (
-    <main className="relative min-h-screen overflow-x-clip bg-zinc-950 text-zinc-50">
+    <main className="relative min-h-screen overflow-x-clip bg-slate-950 text-slate-50">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden border-b border-white/10 bg-black">
+      <section className="relative isolate overflow-hidden border-b border-slate-800">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.18),rgba(0,0,0,0))]"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-size-[64px_64px]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_20%,rgba(0,91,148,0.30),transparent_60%)]"
         />
         <div className="mx-auto max-w-5xl px-6 py-24 sm:px-10 sm:py-28">
-          <p className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-white/60 backdrop-blur-md">
-            <MapPin className="h-3.5 w-3.5 text-cyan-300" />
+          <p className="inline-flex w-fit items-center gap-2 rounded-md border border-slate-800 bg-slate-900/60 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-slate-400">
+            <MapPin className="h-3.5 w-3.5 text-cyan-400" />
             {city.region}
           </p>
-          <h1 className="mt-8 text-4xl font-semibold leading-[1.08] tracking-tighter text-white md:text-6xl">
+          <h1 className="mt-8 text-4xl font-semibold leading-[1.08] tracking-tight text-white md:text-6xl">
             SAP Entwicklung {city.name} –{" "}
-            <span className="bg-linear-to-r from-violet-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
-              ABAP & S/4 HANA Expertin
-            </span>
+            <span className="text-cyan-400">ABAP &amp; S/4 HANA Expertin</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/60">{city.intro}</p>
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-400">{city.intro}</p>
           {city.highlight && (
-            <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/5 px-4 py-2 text-sm text-emerald-200/90">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+            <p className="mt-4 inline-flex items-center gap-2 rounded-md border border-emerald-500/25 bg-emerald-500/5 px-4 py-2 text-sm text-emerald-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
               {city.highlight}
             </p>
           )}
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href="#kontakt"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_40px_rgba(59,130,246,0.4)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-cyan-500 px-7 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60"
             >
               Kontakt aufnehmen
               <ArrowRight className="h-4 w-4" />
             </a>
             <Link
               href="/#leistungen"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-700 bg-slate-900/60 px-7 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-500/40 hover:text-white"
             >
               Leistungen ansehen
             </Link>
@@ -168,20 +170,20 @@ export default async function CityPage({
       </section>
 
       {/* Benefits */}
-      <section className="border-b border-white/10 bg-black/20">
+      <section className="border-b border-slate-800 bg-slate-900/30">
         <div className="mx-auto max-w-5xl px-6 py-20 sm:px-10">
-          <h2 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             SAP-Entwicklung für Unternehmen {city.inCity}
           </h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {benefits.map((b) => (
               <article
                 key={b.title}
-                className="rounded-2xl border border-white/5 bg-zinc-900/50 p-6 backdrop-blur-xl"
+                className="rounded-xl border border-slate-800 bg-slate-900/50 p-6 transition-colors duration-300 hover:border-cyan-500/40"
               >
-                <b.icon className="h-6 w-6 text-cyan-300" />
+                <b.icon className="h-6 w-6 text-cyan-400" />
                 <h3 className="mt-5 text-lg font-semibold text-white">{b.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/60">{b.text}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-400">{b.text}</p>
               </article>
             ))}
           </div>
@@ -189,9 +191,9 @@ export default async function CityPage({
       </section>
 
       {/* Leistungen kurz */}
-      <section className="border-b border-white/10">
+      <section className="border-b border-slate-800">
         <div className="mx-auto max-w-5xl px-6 py-20 sm:px-10">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             SAP-Leistungen für {city.name} und Umgebung
           </h2>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -207,9 +209,9 @@ export default async function CityPage({
             ]).map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-3 rounded-xl border border-white/5 bg-zinc-900/40 px-4 py-3 text-sm leading-6 text-white/70"
+                className="flex items-start gap-3 rounded-md border border-slate-800 bg-slate-900/40 px-4 py-3 text-sm leading-6 text-slate-300"
               >
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" aria-hidden="true" />
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-cyan-400" aria-hidden="true" />
                 {item}
               </li>
             ))}
@@ -218,19 +220,19 @@ export default async function CityPage({
       </section>
 
       {/* Kontakt */}
-      <section id="kontakt" className="scroll-mt-24 bg-black/20">
+      <section id="kontakt" className="scroll-mt-24 bg-slate-900/30">
         <div className="mx-auto max-w-3xl px-6 py-24 sm:px-10">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/50">
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-slate-500">
             Kontakt aufnehmen
           </p>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             SAP-Projekt {city.inCity}? Sprechen Sie mich an.
           </h2>
-          <p className="mt-4 text-base leading-7 text-white/70">
-            Sie suchen eine erfahrene SAP-Entwicklerin für Ihr Projekt {city.inCity}? 
+          <p className="mt-4 text-base leading-7 text-slate-400">
+            Sie suchen eine erfahrene SAP-Entwicklerin für Ihr Projekt {city.inCity}?
             Beschreiben Sie mir kurz Ihr Vorhaben und ich melde mich zeitnah bei Ihnen.
           </p>
-          <div className="mt-10">
+          <div className="mt-10 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-9">
             <ContactForm />
           </div>
         </div>
