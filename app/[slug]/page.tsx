@@ -129,7 +129,7 @@ export default async function CityPage({
       <section className="relative isolate overflow-hidden border-b border-white/10 bg-black">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.18),rgba(0,0,0,0))]
+          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.18),rgba(0,0,0,0))]"
         />
         <div className="mx-auto max-w-5xl px-6 py-24 sm:px-10 sm:py-28">
           <p className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-white/60 backdrop-blur-md">

@@ -3,7 +3,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import ToasterProvider from "./components/ToasterProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -214,7 +213,6 @@ export default function RootLayout({
             }),
           }}
         />
-        <ToasterProvider />
         <Header />
         <div className="pt-16 flex-1">{children}</div>
         <Footer />

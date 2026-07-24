@@ -1,149 +1,284 @@
 "use client";
 
-import { useRef, useState, useTransition } from "react";
-import { Turnstile } from "@marsidev/react-turnstile";
-import { Loader2 } from "lucide-react";
-import { toast } from "sonner";
-import { submitPortfolioLead } from "../actions/leads";
+import { useState } from "react";
+import { Send, Copy, Check, Mail } from "lucide-react";
 
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// KONFIGURATION – Hier die Ziel-E-Mail-Adresse anpassen
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const TARGET_EMAIL = "Sabrina.Knaup@SAPCoding.de";
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// STYLING KONSTANTEN
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 const fieldClass =
   "min-h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white outline-none transition-all duration-300 placeholder:text-white/25 focus:border-cyan-300/50 focus:bg-white/[0.06] focus:shadow-[0_0_24px_rgba(34,211,238,0.12)]";
-const wrapperClass =
-  "block space-y-2 text-sm text-white/60 transition-colors duration-300 focus-within:text-white/90 [&:focus-within_input]:border-violet-400/60 [&:focus-within_input]:shadow-[0_0_28px_rgba(124,58,237,0.18)] [&:focus-within_textarea]:border-violet-400/60 [&:focus-within_textarea]:shadow-[0_0_28px_rgba(124,58,237,0.18)]";
 
-type Interest = "" | "abap" | "formulare" | "schnittstellen" | "sonstiges";
+const wrapperClass =
+  "block space-y-2 text-sm text-white/60 transition-colors duration-300 focus-within:text-white/90 [&:focus-within_input]:border-violet-400/60 [&:focus-within_input]:shadow-[0_0_28px_rgba(124,58,237,0.18)] [&:focus-within_textarea]:border-violet-400/60 [&:focus-within_textarea]:shadow-[0_0_28px_rgba(124,58,237,0.18)] [&:focus-within_select]:border-violet-400/60 [&:focus-within_select]:shadow-[0_0_28px_rgba(124,58,237,0.18)]";
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// BETREFF-OPTIONEN
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const SUBJECT_OPTIONS = [
+  { value: "", label: "Bitte auswählen" },
+  { value: "ABAP Entwicklung", label: "ABAP Entwicklung" },
+  { value: "Formulare", label: "Formulare (Adobe Forms / Smart Forms)" },
+  { value: "Schnittstellen", label: "Schnittstellen (EDI / IDoc / RFC)" },
+  { value: "S/4 HANA", label: "S/4 HANA Transformation" },
+  { value: "Sonstiges", label: "Sonstiges SAP-Projekt" },
+];
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// FORMULAR-STATE TYPEN
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
 
 export default function ContactForm() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [isSubmitting, startTransition] = useTransition();
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const [interest, setInterest] = useState<Interest>("");
+  // Formular-State
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  // Validierungs-Fehler
+  const [errors, setErrors] = useState<FormErrors>({});
 
-    if (!turnstileToken) {
-      toast.error("Bitte bestätigen Sie, dass Sie kein Roboter sind.");
+  // UI-State für "E-Mail kopiert" Feedback
+  const [copied, setCopied] = useState(false);
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // VALIDIERUNG
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Bitte geben Sie Ihren Namen ein.";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Bitte geben Sie Ihre E-Mail-Adresse ein.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
+    }
+
+    if (!formData.subject) {
+      newErrors.subject = "Bitte wählen Sie einen Betreff.";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Bitte beschreiben Sie Ihr Anliegen.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // MAILTO-LINK GENERIEREN
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const generateMailtoUrl = (): string => {
+    // Betreff formatieren: [Anfrage] {Betreff} - von {Name}
+    const subject = `[Anfrage] ${formData.subject} - von ${formData.name}`;
+
+    // Body formatieren
+    const body = `Hallo,
+
+Name: ${formData.name}
+E-Mail: ${formData.email}
+
+Nachricht:
+${formData.message}`;
+
+    // URL-enkodieren und mailto-Link bauen
+    return `mailto:${TARGET_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // FORMULAR ABSENDEN (öffnet Mail-Programm)
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
       return;
     }
 
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    formData.set("cf-turnstile-response", turnstileToken);
-
-    startTransition(async () => {
-      const result = await submitPortfolioLead(formData);
-
-      if (result.success) {
-        toast.success("Anfrage erfolgreich gesendet!");
-        formRef.current?.reset();
-        setTurnstileToken(null);
-        setInterest("");
-        return;
-      }
-
-      toast.error(result.error ?? "Fehler beim Senden. Bitte versuchen Sie es erneut.");
-    });
+    // Mailto-Link öffnen
+    window.location.href = generateMailtoUrl();
   };
 
-  return (
-    <form
-      ref={formRef}
-      onSubmit={handleSubmit}
-      method="post"
-      className="space-y-5"
-    >
-      {/* Honeypot – hidden from real users, filled by bots */}
-      <input
-        name="website"
-        type="text"
-        autoComplete="off"
-        tabIndex={-1}
-        aria-hidden="true"
-        className="absolute -left-full h-0 w-0 overflow-hidden opacity-0"
-      />
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // E-MAIL-ADRESSE IN ZWISCHENABLAGE KOPIEREN
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const copyEmailToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(TARGET_EMAIL);
+      setCopied(true);
+      // Nach 2 Sekunden zurücksetzen
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback für ältere Browser
+      const textArea = document.createElement("textarea");
+      textArea.value = TARGET_EMAIL;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // INPUT CHANGE HANDLER
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Fehler für dieses Feld löschen wenn der User tippt
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // RENDER
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Name & E-Mail */}
       <div className="grid gap-5 md:grid-cols-2">
         <label className={wrapperClass}>
           Name *
-          <input required name="name" type="text" autoComplete="name" className={fieldClass} />
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            autoComplete="name"
+            className={`${fieldClass} ${errors.name ? "!border-red-400/60" : ""}`}
+            placeholder="Ihr Name"
+          />
+          {errors.name && (
+            <span className="text-xs text-red-400">{errors.name}</span>
+          )}
         </label>
-        <label className={wrapperClass}>
-          Unternehmen (optional)
-          <input name="company" type="text" autoComplete="organization" className={fieldClass} />
-        </label>
-      </div>
 
-      <div className="grid gap-5 md:grid-cols-2">
         <label className={wrapperClass}>
           E-Mail-Adresse *
-          <input required name="email" type="email" autoComplete="email" className={fieldClass} />
-        </label>
-        <label className={wrapperClass}>
-          Telefon (optional)
-          <input name="phone" type="tel" autoComplete="tel" className={fieldClass} />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            autoComplete="email"
+            className={`${fieldClass} ${errors.email ? "!border-red-400/60" : ""}`}
+            placeholder="ihre@email.de"
+          />
+          {errors.email && (
+            <span className="text-xs text-red-400">{errors.email}</span>
+          )}
         </label>
       </div>
 
+      {/* Betreff / Anlass */}
       <label className={wrapperClass}>
-        Woran sind Sie interessiert?
+        Worum geht es? *
         <select
-          name="interest"
-          value={interest}
-          onChange={(e) => setInterest(e.target.value as Interest)}
-          className={`${fieldClass} appearance-none`}
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          className={`${fieldClass} appearance-none cursor-pointer ${errors.subject ? "!border-red-400/60" : ""}`}
         >
-          <option value="" className="bg-zinc-900">
-            Bitte auswählen (optional)
-          </option>
-          <option value="abap" className="bg-zinc-900">
-            ABAP Entwicklung
-          </option>
-          <option value="formulare" className="bg-zinc-900">
-            Formulare (Adobe Forms / Smart Forms)
-          </option>
-          <option value="schnittstellen" className="bg-zinc-900">
-            Schnittstellen (EDI / IDoc / RFC)
-          </option>
-          <option value="sonstiges" className="bg-zinc-900">
-            Sonstiges SAP-Projekt
-          </option>
+          {SUBJECT_OPTIONS.map((option) => (
+            <option key={option.value} value={option.value} className="bg-zinc-900">
+              {option.label}
+            </option>
+          ))}
         </select>
+        {errors.subject && (
+          <span className="text-xs text-red-400">{errors.subject}</span>
+        )}
       </label>
 
+      {/* Nachricht */}
       <label className={wrapperClass}>
-        Ihr SAP-Projekt / Anliegen *
+        Ihr Anliegen *
         <textarea
-          required
           name="message"
-          maxLength={1000}
+          value={formData.message}
+          onChange={handleChange}
           rows={5}
-          className={`${fieldClass} resize-none`}
+          className={`${fieldClass} resize-none ${errors.message ? "!border-red-400/60" : ""}`}
           placeholder="Beschreiben Sie kurz Ihr SAP-Entwicklungsprojekt..."
         />
+        {errors.message && (
+          <span className="text-xs text-red-400">{errors.message}</span>
+        )}
       </label>
 
-      <Turnstile
-        siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-        onSuccess={setTurnstileToken}
-        onExpire={() => setTurnstileToken(null)}
-        options={{ theme: "dark", size: "normal" }}
-      />
+      {/* Buttons */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        {/* Haupt-Button: Anfrage via E-Mail */}
+        <button
+          type="submit"
+          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-violet-500 via-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_40px_rgba(124,58,237,0.4)] transition hover:brightness-110 hover:shadow-[0_0_60px_rgba(34,211,238,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 sm:w-auto"
+        >
+          <Send className="h-4 w-4" />
+          Anfrage via E-Mail
+        </button>
 
-      <button
-        type="submit"
-        disabled={isSubmitting || !turnstileToken}
-        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-violet-500 via-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_40px_rgba(124,58,237,0.4)] transition hover:brightness-110 hover:shadow-[0_0_60px_rgba(34,211,238,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
-      >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="h-4 w-4 animate-spin" />
-            Wird gesendet...
-          </>
-        ) : (
-          "Nachricht senden"
-        )}
-      </button>
+        {/* Sekundär-Button: E-Mail kopieren */}
+        <button
+          type="button"
+          onClick={copyEmailToClipboard}
+          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white/70 transition hover:border-white/30 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 sm:w-auto"
+        >
+          {copied ? (
+            <>
+              <Check className="h-4 w-4 text-emerald-400" />
+              <span className="text-emerald-400">Kopiert!</span>
+            </>
+          ) : (
+            <>
+              <Copy className="h-4 w-4" />
+              E-Mail-Adresse kopieren
+            </>
+          )}
+        </button>
+      </div>
+
+      {/* Hinweis für Nutzer ohne Mail-Programm */}
+      <p className="flex items-start gap-2 text-xs leading-5 text-white/40">
+        <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+        <span>
+          Der Button öffnet Ihr Standard-E-Mail-Programm. Alternativ schreiben Sie direkt an{" "}
+          <a
+            href={`mailto:${TARGET_EMAIL}`}
+            className="text-cyan-300/80 underline decoration-cyan-300/30 underline-offset-2 transition hover:text-cyan-300 hover:decoration-cyan-300/60"
+          >
+            {TARGET_EMAIL}
+          </a>
+        </span>
+      </p>
     </form>
   );
 }
