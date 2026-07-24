@@ -90,7 +90,31 @@ export default async function CityPage({
     url: `${BASE_URL}/${slug}`,
     email: "Sabrina.Knaup@SAPCoding.de",
     telephone: "+49-160-98427523",
-    areaServed: { "@type": "City", name: city.name },
+    knowsAbout: [
+      "SAP Entwicklung",
+      "ABAP Programmierung",
+      "ABAP OO",
+      "Adobe Forms",
+      "Smart Forms",
+      "EDI Schnittstellen",
+      "IDoc Entwicklung",
+      "S/4 HANA",
+      "Zoll und Außenhandel",
+    ],
+    areaServed: {
+      "@type": "City",
+      name: city.name,
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: city.geo.lat,
+        longitude: city.geo.lng,
+      },
+    },
+    provider: {
+      "@type": "Person",
+      name: "Sabrina Knaup",
+      jobTitle: "SAP Development Expert · EDI & Zoll Consultant",
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "Elsterweg 2",
@@ -101,8 +125,8 @@ export default async function CityPage({
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: city.geo.lat,
-      longitude: city.geo.lng,
+      latitude: 50.6803,
+      longitude: 8.3062,
     },
     priceRange: "$$",
     currenciesAccepted: "EUR",

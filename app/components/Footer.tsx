@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
+import { CITIES } from "../lib/cities";
+
+const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
@@ -31,13 +34,35 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Regionen – interne Verlinkung der lokalen Landingpages (SEO/GEO) */}
+      <nav
+        aria-label="SAP-Entwicklung nach Region"
+        className="mx-auto mb-16 max-w-7xl border-t border-slate-800 px-5 pt-14 sm:px-6"
+      >
+        <p className="text-xs font-medium uppercase tracking-[0.25em] text-slate-500">
+          SAP-Entwicklung in Ihrer Region
+        </p>
+        <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm">
+          {CITIES.map((city) => (
+            <li key={city.slug}>
+              <Link
+                href={`/sap-entwicklung-${city.slug}`}
+                className="text-slate-400 transition-colors hover:text-cyan-400"
+              >
+                SAP-Entwicklung {city.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 border-t border-slate-800 px-5 pt-14 text-sm sm:px-6 md:grid-cols-[2fr_1fr] md:items-end">
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-slate-600">
             SAP Entwicklung aus Herborn, Hessen
           </p>
           <p className="mt-4 select-none text-slate-500">
-            © 2025 Sabrina Knaup Development
+            © {currentYear} Sabrina Knaup Development
           </p>
         </div>
         <div className="flex items-center gap-8 text-xs tracking-wider md:justify-end">

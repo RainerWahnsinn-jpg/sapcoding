@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { SITE_URL } from "./lib/site";
+import { CITIES } from "./lib/cities";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -155,8 +156,10 @@ export default function RootLayout({
                 "S/4 HANA",
               ],
               areaServed: [
-                { "@type": "City", name: "Herborn" },
+                ...CITIES.map((city) => ({ "@type": "City", name: city.name })),
                 { "@type": "State", name: "Hessen" },
+                { "@type": "State", name: "Nordrhein-Westfalen" },
+                { "@type": "State", name: "Rheinland-Pfalz" },
                 { "@type": "Country", name: "Deutschland" },
               ],
               hasOfferCatalog: {
@@ -188,6 +191,15 @@ export default function RootLayout({
                       name: "Schnittstellen & EDI",
                       description:
                         "EDI, RFC und OData Schnittstellen für nahtlose Systemintegration.",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "Service",
+                      name: "SAP Consulting",
+                      description:
+                        "Beratung für EDI, SD sowie Zoll und Außenhandel: Konzepte, Prozessoptimierung und Customizing.",
                     },
                   },
                 ],
