@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CITIES } from "./lib/cities";
-
-const BASE_URL = "https://www.sapcoding.de";
+import { SITE_URL as BASE_URL } from "./lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

@@ -3,9 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check, MapPin, ArrowRight, Code2, FileText, Link2 } from "lucide-react";
 import { CITIES, getCity } from "../lib/cities";
+import { SITE_URL as BASE_URL } from "../lib/site";
 import ContactForm from "../components/ContactForm";
-
-const BASE_URL = "https://www.sapcoding.de";
 
 /** Nur die definierten Städte-Slugs sind gültige Routen. */
 export const dynamicParams = false;

@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import { SITE_URL } from "./lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,7 +24,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.sapcoding.de"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "SAP Entwicklung & ABAP Expertin | Sabrina Knaup",
     template: "%s | Sabrina Knaup – SAP Development Expert",
@@ -82,14 +83,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "de_DE",
-    url: "https://www.sapcoding.de",
+    url: "/",
     siteName: "Sabrina Knaup | SAP Development Expert",
     title: "SAP Entwicklung & ABAP Expertin | Sabrina Knaup",
     description:
       "SAP-Entwicklung & Consulting: 15+ Jahre Erfahrung in ABAP, EDI-Schnittstellen, Adobe Forms sowie Zoll und Außenhandel.",
     images: [
       {
-        url: "https://sapcoding.de/og-image.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Sabrina Knaup – SAP Development Expert",
@@ -101,10 +102,10 @@ export const metadata: Metadata = {
     title: "SAP Entwicklung & ABAP Expertin | Sabrina Knaup",
     description:
       "SAP-Entwicklung & Consulting: 15+ Jahre Erfahrung in ABAP, EDI-Schnittstellen und Adobe Forms.",
-    images: ["https://sapcoding.de/og-image.png"],
+    images: ["/og-image.png"],
   },
   alternates: {
-    canonical: "https://www.sapcoding.de",
+    canonical: "/",
   },
 };
 
@@ -125,14 +126,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
-              "@id": "https://www.sapcoding.de/#business",
+              "@id": `${SITE_URL}/#business`,
               name: "Sabrina Knaup | SAP Development Expert",
               alternateName: "SAP Entwicklerin – Sabrina Knaup",
-              image: "https://www.sapcoding.de/og-image.png",
-              logo: "https://www.sapcoding.de/og-image.png",
+              image: `${SITE_URL}/og-image.png`,
+              logo: `${SITE_URL}/og-image.png`,
               description:
                 "SAP-Entwicklung & Consulting mit 15+ Jahren Erfahrung. Spezialisiert auf ABAP, EDI-Schnittstellen, Adobe Forms, Zoll und Außenhandel sowie die Module SD, MM, FI.",
-              url: "https://www.sapcoding.de",
+              url: SITE_URL,
               email: "Sabrina.Knaup@SAPCoding.de",
               telephone: "+49-160-98427523",
               founder: {
