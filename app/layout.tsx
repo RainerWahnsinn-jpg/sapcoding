@@ -90,7 +90,7 @@ export const metadata: Metadata = {
       "Externe SAP-Expertin mit 15+ Jahren Erfahrung in ABAP, EDI-Schnittstellen und Adobe Forms. Maßgeschneiderte SAP-Entwicklung für Ihr Unternehmen.",
     images: [
       {
-        url: "https://sapcoding.de/og-image.jpg",
+        url: "https://sapcoding.de/og-image.png",
         width: 1200,
         height: 630,
         alt: "Sabrina Knaup – SAP Development Expert",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     title: "SAP Entwicklung & ABAP Expertin | Sabrina Knaup",
     description:
       "Externe SAP-Expertin mit 15+ Jahren Erfahrung in ABAP, EDI-Schnittstellen und Adobe Forms.",
-    images: ["https://sapcoding.de/og-image.jpg"],
+    images: ["https://sapcoding.de/og-image.png"],
   },
   alternates: {
     canonical: "https://www.sapcoding.de",
@@ -129,8 +129,8 @@ export default function RootLayout({
               "@id": "https://www.sapcoding.de/#business",
               name: "Sabrina Knaup | SAP Development Expert",
               alternateName: "SAP Entwicklerin – Sabrina Knaup",
-              image: "https://www.sapcoding.de/og-image.jpg",
-              logo: "https://www.sapcoding.de/og-image.jpg",
+              image: "https://www.sapcoding.de/og-image.png",
+              logo: "https://www.sapcoding.de/og-image.png",
               description:
                 "Externe SAP-Expertin mit 15+ Jahren Erfahrung. Spezialisiert auf ABAP, EDI-Schnittstellen, Adobe Forms und Module SD, MM, FI. Maßgeschneiderte SAP-Entwicklung für Ihr Unternehmen.",
               url: "https://www.sapcoding.de",

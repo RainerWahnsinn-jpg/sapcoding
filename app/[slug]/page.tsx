@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check, MapPin, ArrowRight, Zap, Gauge, Bot } from "lucide-react";
+import { Check, MapPin, ArrowRight, Code2, FileText, Link2 } from "lucide-react";
 import { CITIES, getCity } from "../lib/cities";
 import ContactForm from "../components/ContactForm";
 
-const BASE_URL = "https://www.constantin-felix.de";
+const BASE_URL = "https://www.sapcoding.de";
 
 /** Nur die definierten Städte-Slugs sind gültige Routen. */
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return CITIES.map((city) => ({ slug: `webdesign-${city.slug}` }));
+  return CITIES.map((city) => ({ slug: `sap-entwicklung-${city.slug}` }));
 }
 
 function cityFromSlug(slug: string) {
-  if (!slug.startsWith("webdesign-")) return undefined;
-  return getCity(slug.replace("webdesign-", ""));
+  if (!slug.startsWith("sap-entwicklung-")) return undefined;
+  return getCity(slug.replace("sap-entwicklung-", ""));
 }
 
 export async function generateMetadata({
@@ -28,8 +28,8 @@ export async function generateMetadata({
   const city = cityFromSlug(slug);
   if (!city) return {};
 
-  const title = `Webdesign ${city.name} | Webseite erstellen lassen`;
-  const description = `Webdesigner ${city.inCity}: moderne, schnelle Webseiten, Web-Apps & KI-Lösungen für Handwerk und Mittelstand. ${city.intro} Jetzt kostenlose Erstberatung sichern.`;
+  const title = `SAP Entwicklung ${city.name} | ABAP Consultant & S/4 HANA`;
+  const description = `SAP Entwicklerin ${city.inCity}: ABAP Programmierung, S/4 HANA Transformation, EDI-Schnittstellen und Adobe Forms. ${city.intro} Jetzt Kontakt aufnehmen.`;
   const url = `${BASE_URL}/${slug}`;
 
   return {
@@ -40,35 +40,35 @@ export async function generateMetadata({
       type: "website",
       locale: "de_DE",
       url,
-      siteName: "Constantin-Felix Weib | Web & KI Agentur Siegen",
+      siteName: "Sabrina Knaup | SAP Development Expert",
       title,
       description,
-      images: [`${BASE_URL}/og-image.jpg`],
+      images: [`${BASE_URL}/og-image.png`],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [`${BASE_URL}/og-image.jpg`],
+      images: [`${BASE_URL}/og-image.png`],
     },
   };
 }
 
 const benefits = [
   {
-    icon: Gauge,
-    title: "Blitzschnelle Ladezeiten",
-    text: "Gebaut mit Next.js statt aufgeblähtem WordPress – für Top-Rankings bei Google und zufriedene Besucher.",
+    icon: Code2,
+    title: "ABAP & S/4 HANA Expertise",
+    text: "15+ Jahre Erfahrung in ABAP-Entwicklung und S/4 HANA Transformationsprojekten – von der Migration bis zur Neuentwicklung.",
   },
   {
-    icon: Zap,
-    title: "Für Smartphones optimiert",
-    text: "Mobile-first entwickelt: Ihre Seite überzeugt auf jedem Gerät und gewinnt Kunden aus der Region.",
+    icon: FileText,
+    title: "Formulare & Outputs",
+    text: "Adobe Forms und Smart Forms für professionelle Geschäftsdokumente in SD, MM, FI und weiteren Modulen.",
   },
   {
-    icon: Bot,
-    title: "KI & Automatisierung",
-    text: "Auf Wunsch mit intelligenten Features, die Routineaufgaben übernehmen und Ihrem Team Zeit sparen.",
+    icon: Link2,
+    title: "Schnittstellen & EDI",
+    text: "Nahtlose Systemintegration durch EDI-Anbindungen, IDoc-Entwicklung und RFC/OData Services.",
   },
 ];
 
@@ -85,19 +85,19 @@ export default async function CityPage({
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${BASE_URL}/${slug}#business`,
-    name: `Webdesign ${city.name} – Constantin-Felix Weib`,
-    image: `${BASE_URL}/og-image.jpg`,
-    description: `Webdesigner und Full-Stack Entwickler ${city.inCity}. Moderne Webseiten, Web-Apps und KI-Integrationen für Handwerk und Mittelstand.`,
+    name: `SAP Entwicklung ${city.name} – Sabrina Knaup`,
+    image: `${BASE_URL}/og-image.png`,
+    description: `SAP Entwicklerin und ABAP Consultant ${city.inCity}. Spezialisiert auf S/4 HANA Transformation, EDI-Schnittstellen und Adobe Forms.`,
     url: `${BASE_URL}/${slug}`,
-    email: "Constantin.Weib@hotmail.com",
-    telephone: "+49-176-43772184",
+    email: "Sabrina.Knaup@SAPCoding.de",
+    telephone: "+49-160-98427523",
     areaServed: { "@type": "City", name: city.name },
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Hagener Str. 8",
-      postalCode: "57234",
-      addressLocality: "Wilnsdorf",
-      addressRegion: "Nordrhein-Westfalen",
+      streetAddress: "Elsterweg 2",
+      postalCode: "35745",
+      addressLocality: "Herborn",
+      addressRegion: "Hessen",
       addressCountry: "DE",
     },
     geo: {
@@ -117,7 +117,7 @@ export default async function CityPage({
       {
         "@type": "ListItem",
         position: 2,
-        name: `Webdesign ${city.name}`,
+        name: `SAP Entwicklung ${city.name}`,
         item: `${BASE_URL}/${slug}`,
       },
     ],
@@ -129,7 +129,7 @@ export default async function CityPage({
       <section className="relative isolate overflow-hidden border-b border-white/10 bg-black">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.18),rgba(0,0,0,0))]"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.18),rgba(0,0,0,0))]
         />
         <div className="mx-auto max-w-5xl px-6 py-24 sm:px-10 sm:py-28">
           <p className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.3em] text-white/60 backdrop-blur-md">
@@ -137,9 +137,9 @@ export default async function CityPage({
             {city.region}
           </p>
           <h1 className="mt-8 text-4xl font-semibold leading-[1.08] tracking-tighter text-white md:text-6xl">
-            Webdesign {city.name} –{" "}
+            SAP Entwicklung {city.name} –{" "}
             <span className="bg-linear-to-r from-violet-400 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
-              Webseite erstellen lassen
+              ABAP & S/4 HANA Expertin
             </span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-8 text-white/60">{city.intro}</p>
@@ -154,14 +154,14 @@ export default async function CityPage({
               href="#kontakt"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-indigo-500 to-cyan-400 px-7 py-3 text-sm font-semibold text-black shadow-[0_0_40px_rgba(59,130,246,0.4)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
             >
-              Kostenlose Erstberatung
+              Kontakt aufnehmen
               <ArrowRight className="h-4 w-4" />
             </a>
             <Link
-              href="/#preise"
+              href="/#leistungen"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
             >
-              Preise ansehen
+              Leistungen ansehen
             </Link>
           </div>
         </div>
@@ -171,7 +171,7 @@ export default async function CityPage({
       <section className="border-b border-white/10 bg-black/20">
         <div className="mx-auto max-w-5xl px-6 py-20 sm:px-10">
           <h2 className="max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            Warum eine Webseite von mir für Unternehmen {city.inCity}?
+            SAP-Entwicklung für Unternehmen {city.inCity}
           </h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {benefits.map((b) => (
@@ -192,17 +192,19 @@ export default async function CityPage({
       <section className="border-b border-white/10">
         <div className="mx-auto max-w-5xl px-6 py-20 sm:px-10">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Leistungen für {city.name} und Umgebung
+            SAP-Leistungen für {city.name} und Umgebung
           </h2>
           <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-            {[
-              "Neue Unternehmens-Webseite (Next.js)",
-              "Website-Relaunch & Modernisierung",
-              "Performance- & Google-Optimierung (SEO)",
-              "Interne Web-Apps & Workflow-Tools",
-              "KI-Integration & Chatbots",
-              "Prozessautomatisierung",
-            ].map((item) => (
+            {([
+              "ABAP & ABAP OO Entwicklung",
+              "S/4 HANA Transformation & Migration",
+              "Adobe Forms & Smart Forms",
+              "EDI-Schnittstellen (EDIFACT, VDA)",
+              "IDoc-Entwicklung & Monitoring",
+              "RFC & OData Services",
+              "BADIs, BAPIs & Erweiterungen",
+              "Zoll & Außenhandel (SD, MM, FI)",
+            ]).map((item) => (
               <li
                 key={item}
                 className="flex items-start gap-3 rounded-xl border border-white/5 bg-zinc-900/40 px-4 py-3 text-sm leading-6 text-white/70"
@@ -219,16 +221,16 @@ export default async function CityPage({
       <section id="kontakt" className="scroll-mt-24 bg-black/20">
         <div className="mx-auto max-w-3xl px-6 py-24 sm:px-10">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-white/50">
-            Projektanfrage
+            Kontakt aufnehmen
           </p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Webseite {city.inCity} anfragen
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+            SAP-Projekt {city.inCity}? Sprechen Sie mich an.
           </h2>
           <p className="mt-4 text-base leading-7 text-white/70">
-            Erzählen Sie mir von Ihrem Vorhaben – ich melde mich zeitnah mit einem konkreten
-            Vorschlag.
+            Sie suchen eine erfahrene SAP-Entwicklerin für Ihr Projekt {city.inCity}? 
+            Beschreiben Sie mir kurz Ihr Vorhaben und ich melde mich zeitnah bei Ihnen.
           </p>
-          <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-2xl sm:p-8">
+          <div className="mt-10">
             <ContactForm />
           </div>
         </div>
