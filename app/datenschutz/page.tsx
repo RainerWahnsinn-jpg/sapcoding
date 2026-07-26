@@ -1,13 +1,15 @@
+import Link from "next/link";
+
 export default function DatenschutzPage() {
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-50">
       <section className="mx-auto max-w-4xl px-6 py-20 sm:px-10">
-        <a
+        <Link
           className="mb-6 inline-flex items-center rounded-full border border-white/30 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:border-white/60 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           href="/"
         >
           Zur Startseite
-        </a>
+        </Link>
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/50">
           Datenschutzerklärung
         </p>
@@ -51,22 +53,13 @@ export default function DatenschutzPage() {
 
           <div>
             <p className="text-base font-semibold text-white">
-              3. Kontaktformular und E-Mail-Versand (Resend)
+              3. Kontaktformular und E-Mail-Versand
             </p>
             <p>
               Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus
               dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten (Name,
               E-Mail-Adresse, Unternehmen, Nachricht) zur Bearbeitung der Anfrage und für den
               Fall von Anschlussfragen bei uns gespeichert.
-            </p>
-            <p className="mt-4">
-              Für den sicheren und zuverlässigen Versand dieser Formular-Daten an unsere
-              E-Mail-Adresse nutzen wir den Dienst Resend (Resend Labs Inc., USA). Die Daten
-              werden verschlüsselt übertragen. Weitere Informationen zum Datenschutz bei Resend
-              finden Sie unter:{" "}
-              <a className="underline" href="https://resend.com/privacy">
-                resend.com/privacy
-              </a>
             </p>
           </div>
 
