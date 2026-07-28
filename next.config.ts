@@ -53,6 +53,30 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  /**
+   * 301-Redirects für alte Seiten, die jetzt auf der One-Pager-Startseite
+   * als Anker-Sektionen erreichbar sind.
+   */
+  async redirects() {
+    return [
+      {
+        source: "/kontakt",
+        destination: "/#kontakt",
+        permanent: true,
+      },
+      {
+        source: "/leistungen",
+        destination: "/#leistungen",
+        permanent: true,
+      },
+      {
+        source: "/ueber-mich",
+        destination: "/#ueber-mich",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
