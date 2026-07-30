@@ -108,7 +108,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="font-medium text-slate-400 underline decoration-slate-700 underline-offset-2 transition hover:text-cyan-400 hover:decoration-cyan-500/60"
           >
-            Constantin-Felix
+            Constantin-Felix Weib
           </a>
           {" · "}
           Sie brauchen auch eine professionelle Website?{" "}
